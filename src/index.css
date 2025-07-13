@@ -7,17 +7,33 @@
   html {
     font-family: system-ui, sans-serif;
   }
+
+  html {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1400px) {
+    html {
+      font-size: 22px;
+    }
+  }
+
+  @media (min-width: 1700px) {
+    html {
+      font-size: 27px;
+    }
+  }
 }
 
 /* Prevent images from shrinking on smaller screens */
 @layer utilities {
   .nav-container {
-    padding: 70px 100px 50px 109px;
+    padding: 4.4rem 6.3rem 3.1rem 6.8rem;
   }
 
   @media (max-width: 768px) {
     .nav-container {
-      padding: 20px 16px 16px 16px;
+      padding: 1.25rem 1rem 1rem 1rem;
     }
   }
 }

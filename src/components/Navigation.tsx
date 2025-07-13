@@ -30,7 +30,7 @@ export function Navigation({ navigation }: NavigationProps) {
   }
 
   return (
-    <nav className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[15px] border-quibo-border">
+    <nav className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.93rem] border-quibo-border">
       <button
         onClick={scrollToTop}
         className="flex flex-shrink-0"
@@ -38,17 +38,16 @@ export function Navigation({ navigation }: NavigationProps) {
         <img
           src={navigation.logo.src}
           alt={navigation.logo.alt}
-          className="h-[100px] w-auto -mb-[23px]"
+          className="h-[6.25rem] w-auto -mb-[1.44rem]"
         />
       </button>
       {/* Desktop navigation */}
-      <div className="hidden md:flex items-end" style={{ gap: '80px' }}>
+      <div className="hidden md:flex items-end gap-[5rem]">
         {navigation.links.map((link, index) => (
           <a
             key={index}
             href={link.href}
-            className="text-quibo-text leading-none"
-            style={{ fontSize: '25px' }}
+            className="text-quibo-text leading-none text-[1.5rem]"
           >
             {link.label}
           </a>
@@ -57,12 +56,12 @@ export function Navigation({ navigation }: NavigationProps) {
           href={navigation.whatsapp.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center hover:opacity-75 transition-opacity duration-200"
+          className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
         >
           <img
             src={navigation.whatsapp.icon}
             alt={navigation.whatsapp.alt}
-            className="w-[60px] h-auto flex-shrink-0 -mb-[20px]"
+            className="w-[3.75rem] h-auto -mb-[1.25rem]"
           />
         </a>
       </div>
@@ -84,15 +83,14 @@ export function Navigation({ navigation }: NavigationProps) {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed inset-0 bg-quibo-bg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} style={{ top: '0', paddingTop: '200px' }}>
+      <div className={`md:hidden fixed inset-0 bg-quibo-bg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} style={{ top: '0', paddingTop: '12.5rem' }}>
         <div className="px-6 py-6 space-y-6">
           {navigation.links.map((link, index) => (
             <a
               key={index}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200"
-              style={{ fontSize: '25px' }}
+              className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-[1.5rem]"
             >
               {link.label}
             </a>
@@ -107,8 +105,8 @@ export function Navigation({ navigation }: NavigationProps) {
             <img
               src={navigation.whatsapp.icon}
               alt={navigation.whatsapp.alt}
-              className="w-[60px] h-auto flex-shrink-0"
-              style={{ minWidth: '60px', maxWidth: '60px' }}
+              className="w-[3.75rem] h-auto flex-shrink-0"
+              style={{ minWidth: '3.75rem', maxWidth: '3.75rem' }}
             />
           </a>
         </div>
