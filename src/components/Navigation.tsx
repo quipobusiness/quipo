@@ -25,29 +25,46 @@ export function Navigation({ navigation }: NavigationProps) {
     }
   }, [isOpen])
 
+  // Handle ESC key to close mobile menu
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscKey)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [isOpen])
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
-    <nav className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.93rem] border-quibo-border">
+    <nav className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border">
       <button
         onClick={scrollToTop}
-        className="flex flex-shrink-0"
+        className="flex flex-shrink-0 relative z-[60]"
       >
         <img
           src={navigation.logo.src}
           alt={navigation.logo.alt}
-          className="h-[6.25rem] w-auto -mb-[1.44rem]"
+          className="h-[2.5rem] md:h-[3.91rem] w-auto md:-mb-[0.9rem]"
         />
       </button>
       {/* Desktop navigation */}
-      <div className="hidden md:flex items-end gap-[5rem]">
+      <div className="hidden lg:flex items-end gap-[3.13rem]">
         {navigation.links.map((link, index) => (
           <a
             key={index}
             href={link.href}
-            className="text-quibo-text leading-none text-[1.5rem]"
+            className="text-quibo-text leading-none text-[0.94rem]"
           >
             {link.label}
           </a>
@@ -61,17 +78,17 @@ export function Navigation({ navigation }: NavigationProps) {
           <img
             src={navigation.whatsapp.icon}
             alt={navigation.whatsapp.alt}
-            className="w-[3.75rem] h-auto -mb-[1.25rem]"
+            className="w-[2.34rem] h-auto -mb-[0.78rem]"
           />
         </a>
       </div>
 
       {/* Mobile menu button */}
-      <div className="md:hidden">
+      <div className="lg:hidden relative z-[60]">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="text-quibo-text hover:opacity-75 focus:outline-none focus:ring-2 focus:ring-quibo-text focus:ring-opacity-50 rounded p-2"
+          className="text-quibo-text hover:opacity-75 focus:outline-none rounded p-2"
         >
           <span className="sr-only">Toggle menu</span>
           <div className="relative w-6 h-6">
@@ -83,14 +100,14 @@ export function Navigation({ navigation }: NavigationProps) {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed inset-0 bg-quibo-bg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} style={{ top: '0', paddingTop: '12.5rem' }}>
-        <div className="px-6 py-6 space-y-6">
+      <div className={`lg:hidden fixed inset-0 bg-quibo-bg transition-all duration-300 z-[55] ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-[10%] opacity-0'}`} style={{ top: '0', paddingTop: '7.81rem' }}>
+        <div className="space-y-6 pl-[0.63rem] pr-[0.63rem] pt-6 pb-6 md:pl-[4.25rem] md:pr-[3.94rem]">
           {navigation.links.map((link, index) => (
             <a
               key={index}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-[1.5rem]"
+              className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-[0.94rem]"
             >
               {link.label}
             </a>
@@ -105,8 +122,8 @@ export function Navigation({ navigation }: NavigationProps) {
             <img
               src={navigation.whatsapp.icon}
               alt={navigation.whatsapp.alt}
-              className="w-[3.75rem] h-auto flex-shrink-0"
-              style={{ minWidth: '3.75rem', maxWidth: '3.75rem' }}
+              className="w-[2.34rem] h-auto flex-shrink-0"
+              style={{ minWidth: '2.34rem', maxWidth: '2.34rem' }}
             />
           </a>
         </div>
