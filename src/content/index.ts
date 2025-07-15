@@ -3,11 +3,15 @@ import { LandingPageContent } from '../types'
 export const content: LandingPageContent = {
   // Hero section
   hero: {
-    title: "Tu Título Principal",
-    subtitle: "Tu subtítulo descriptivo va aquí",
+    logo: {
+      src: '/svg/logo-green.svg',
+      alt: 'Quibo. Business partners'
+    },
+    bgImage: '/img/hero.webp',
+    title: "Somos tu equipo contable<br />y de negocios.",
     cta: {
-      primary: "Comenzar",
-      secondary: "Saber Más"
+      title: "Haz una cita",
+      href: "#contact"
     }
   },
 
@@ -15,6 +19,10 @@ export const content: LandingPageContent = {
   navigation: {
     logo: {
       src: "/svg/logo.svg",
+      alt: "Quibo. Business partners"
+    },
+    logoLong: {
+      src: "/svg/logo-long.svg",
       alt: "Quibo. Business partners"
     },
     links: [
@@ -26,7 +34,8 @@ export const content: LandingPageContent = {
       icon: "/svg/social-wa.svg",
       href: "https://wa.me/your-number",
       alt: "WhatsApp"
-    }
+    },
+
   },
 
   // Contact form

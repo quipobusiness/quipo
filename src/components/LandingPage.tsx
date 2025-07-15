@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { LandingPageContent } from '../types'
 import { Navigation } from './Navigation'
 import { HeroSection } from './HeroSection'
@@ -8,11 +9,30 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ content }: LandingPageProps) {
+  const navRef = useRef<HTMLElement>(null)
+
+  // Set navigation height as CSS custom property
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        const height = navRef.current.offsetHeight
+        document.documentElement.style.setProperty('--nav-height', `${height}px`)
+      }
+    }
+
+    updateNavHeight()
+    window.addEventListener('resize', updateNavHeight)
+
+    return () => {
+      window.removeEventListener('resize', updateNavHeight)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
-      <Navigation navigation={content.navigation} />
+      <Navigation ref={navRef} navigation={content.navigation} />
 
-      <main>
+      <main className="pt-[--nav-height]">
         <HeroSection hero={content.hero} />
 
         {/* Soluciones section */}

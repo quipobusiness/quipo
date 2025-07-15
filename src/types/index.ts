@@ -3,12 +3,14 @@ export interface NavigationLink {
   label: string
   href: string
 }
+interface Image {
+  src: string
+  alt: string
+}
 
 export interface Navigation {
-  logo: {
-    src: string
-    alt: string
-  }
+  logo: Image
+  logoLong: Image,
   links: NavigationLink[]
   whatsapp: {
     icon: string
@@ -19,11 +21,12 @@ export interface Navigation {
 
 // Hero section types
 export interface HeroSection {
+  logo: Image;
+  bgImage: string
   title: string
-  subtitle: string
   cta: {
-    primary: string
-    secondary: string
+    title: string
+    href: string
   }
 }
 
