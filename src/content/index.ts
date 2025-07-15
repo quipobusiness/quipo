@@ -34,8 +34,38 @@ export const content: LandingPageContent = {
       icon: "/svg/social-wa.svg",
       href: "https://wa.me/your-number",
       alt: "WhatsApp"
-    },
+    }
+  },
 
+  contabilidadCta: {
+    label: "Contabilidad",
+    title: "La salud de tu negocio, está en <em>los números.</em>",
+    description: "En la vida como en los negocios, el objetivo es <strong>encontrar el equilibrio</strong>, el balance perfecto entre salud y crecimiento, entre bienestar y rendimiento.",
+    cta: {
+      text: "HABLEMOS DE NÚMEROS",
+      href: "#contacto"
+    },
+    img: {
+      src: "/img/Quipo-Balance-mono.png",
+      alt: "Contabilidad"
+    },
+    bgImg: "/img/Quipo-Balance-BG.png"
+  },
+
+  impuestosCta: {
+    label: "Impuestos",
+    title: "En paz con tus <em>impuestos</em>",
+    description: "Simplificamos el proceso de facturación electrónica para tu empresa. Cumplimos con todos los requisitos fiscales mientras automatizamos tus procesos para mayor eficiencia y control.",
+    cta: {
+      text: "Empezar ahora",
+      href: "#contacto"
+    },
+    img: {
+      src: "/img/Quipo-Paz-mono.png",
+      alt: "Facturación electrónica"
+    },
+    bgImg: "/img/Quipo-Paz-BG.png",
+    reverse: true
   },
 
   // Contact form

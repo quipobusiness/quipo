@@ -1,4 +1,5 @@
 import { HeroSection as HeroSectionType } from '../types'
+import { Button } from './Button'
 
 interface HeroSectionProps {
   hero: HeroSectionType
@@ -9,7 +10,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
     <section
       className="min-h-[60vh] pt-[5.6rem] pb-[7.7rem] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center"
       style={{
-        backgroundImage: `url(${hero.bgImage})`,
+        backgroundImage: `url(${hero.bgImage})`
       }}
     >
       <div className="flex flex-col items-center max-w-[80%]">
@@ -27,14 +28,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
         />
 
         {/* CTA Button */}
-        <a
+        <Button
+          text={hero.cta.title}
           href={hero.cta.href}
-          className="bg-quibo-border text-quibo-text rounded-full uppercase font-semibold
-                     text-[0.93rem] px-[2.22rem] py-[1.48rem]
-                     hover:opacity-90 transition-opacity duration-200"
-        >
-          {hero.cta.title}
-        </a>
+          variant="primary"
+        />
       </div>
     </section>
   )

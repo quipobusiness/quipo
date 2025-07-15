@@ -20,6 +20,8 @@ export default {
         'quibo-text': '#695557',
         'quibo-border': '#ddf861',
         'quibo-bg': '#f2edf0',
+        'quibo-green-dark': '#2b4a44',
+        'quibo-green-light': '#d9f4a5',
       },
     },
   },

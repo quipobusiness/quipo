@@ -30,6 +30,23 @@ export interface HeroSection {
   }
 }
 
+// Service CTA types
+export interface ServiceCTAProps {
+  label: string
+  title: string
+  description: string
+  cta: {
+    text: string
+    href: string
+  }
+  img: {
+    src: string
+    alt: string
+  }
+  bgImg: string
+  reverse?: boolean
+}
+
 // Contact form types
 export interface FormField {
   name: string
@@ -55,5 +72,7 @@ export interface ContactSection {
 export interface LandingPageContent {
   hero: HeroSection
   navigation: Navigation
+  contabilidadCta: ServiceCTAProps
+  impuestosCta: ServiceCTAProps
   contact: ContactSection
 }

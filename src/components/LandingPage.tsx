@@ -3,9 +3,11 @@ import { LandingPageContent } from '../types'
 import { Navigation } from './Navigation'
 import { HeroSection } from './HeroSection'
 import { ContactSection } from './ContactSection'
+import { ServiceCta } from './ServiceCTA'
 
 interface LandingPageProps {
   content: LandingPageContent
+  children: React.ReactNode[]
 }
 
 export function LandingPage({ content }: LandingPageProps) {
@@ -34,6 +36,7 @@ export function LandingPage({ content }: LandingPageProps) {
 
       <main className="pt-[--nav-height]">
         <HeroSection hero={content.hero} />
+        <ServiceCta {...content.contabilidadCta} />
 
         {/* Soluciones section */}
         <section id="soluciones" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -42,6 +45,8 @@ export function LandingPage({ content }: LandingPageProps) {
             <p className="text-center text-gray-600">Content for solutions will go here</p>
           </div>
         </section>
+
+        <ServiceCta {...content.impuestosCta} reverse />
 
         {/* Servicios section */}
         <section id="servicios" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
