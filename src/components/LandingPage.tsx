@@ -4,10 +4,12 @@ import { Navigation } from './Navigation'
 import { HeroSection } from './HeroSection'
 import { ContactSection } from './ContactSection'
 import { ServiceCta } from './ServiceCTA'
+import { SolutionsSection } from './SolutionsSection'
+import { ServicesSection } from './ServicesSection'
+import { ClientsSection } from './ClientsSection'
 
 interface LandingPageProps {
   content: LandingPageContent
-  children: React.ReactNode[]
 }
 
 export function LandingPage({ content }: LandingPageProps) {
@@ -38,23 +40,13 @@ export function LandingPage({ content }: LandingPageProps) {
         <HeroSection hero={content.hero} />
         <ServiceCta {...content.contabilidadCta} />
 
-        {/* Soluciones section */}
-        <section id="soluciones" className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Soluciones</h2>
-            <p className="text-center text-gray-600">Content for solutions will go here</p>
-          </div>
-        </section>
+        <SolutionsSection solutions={content.solutions} />
 
         <ServiceCta {...content.impuestosCta} reverse />
 
-        {/* Servicios section */}
-        <section id="servicios" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Servicios</h2>
-            <p className="text-center text-gray-600">Content for services will go here</p>
-          </div>
-        </section>
+        <ServicesSection services={content.services} />
+
+        {content.clients && <ClientsSection clients={content.clients} />}
 
         <ContactSection contact={content.contact} />
       </main>

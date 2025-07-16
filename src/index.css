@@ -2,10 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom fonts will be defined here */
+/* Font declarations */
 @layer base {
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/Satoshi-Regular.eot') format('embedded-opentype'),
+         url('/fonts/Satoshi-Regular.woff') format('woff'),
+         url('/fonts/Satoshi-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/Satoshi-Medium.eot') format('embedded-opentype'),
+         url('/fonts/Satoshi-Medium.woff') format('woff'),
+         url('/fonts/Satoshi-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Shipori Mincho';
+    src: url('/fonts/ShipporiMincho-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
   html {
-    font-family: system-ui, sans-serif;
+    font-family: 'Satoshi', system-ui, sans-serif;
     font-size: 16px;
   }
 
@@ -20,6 +48,12 @@
       font-size: 27px;
     }
   }
+
+  em {
+    font-family: 'Shipori Mincho', serif;
+    font-weight: 600;
+    font-style: normal;
+  }
 }
 
 /* Prevent images from shrinking on smaller screens */
@@ -27,5 +61,4 @@
   .nav-container {
     padding: 2.75rem 3.94rem 1.94rem 4.25rem;
   }
-
 }

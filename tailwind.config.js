@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Custom fonts will be added here
+        'satoshi': ['Satoshi', 'system-ui', 'sans-serif'],
+        'shipori': ['Shipori Mincho', 'serif'],
+        'sans': ['Satoshi', 'system-ui', 'sans-serif'],
       },
       colors: {
         'quibo-text': '#695557',
@@ -22,6 +24,8 @@ export default {
         'quibo-bg': '#f2edf0',
         'quibo-green-dark': '#2b4a44',
         'quibo-green-light': '#d9f4a5',
+        'quibo-gray-light': '#f3f3f3',
+        'quibo-input-bg': '#59494c',
       },
     },
   },

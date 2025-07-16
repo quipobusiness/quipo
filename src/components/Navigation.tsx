@@ -72,7 +72,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             <a
               key={index}
               href={link.href}
-              className="text-quibo-text leading-none text-[0.94rem]"
+              className="text-quibo-text leading-none text-[0.94rem] font-medium"
             >
               {link.label}
             </a>
