@@ -3,14 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://alexromo.github.io/quibo",
+  "homepage": "https://md-ap.github.io/quibo",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:gh-pages": "tsc && vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d dist"
+    "preview:gh-pages": "vite preview --base=/quibo/",
+    "predeploy": "pnpm run build:gh-pages",
+    "deploy": "npx gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
