@@ -8,25 +8,25 @@ interface CategoriesCardProps {
 
 export function CategoriesCard({ category }: CategoriesCardProps) {
   return (
-    <div className="bg-quibo-gray-light p-[1.85rem] text-left xl:rounded-[1.48rem] xl:pt-[1.59rem] xl:px-[1.96rem] xl:pb-[3.22rem]">
-      <div className="xl:pb-[2.96rem]">
+    <div className="bg-quibo-gray-light p-[1.85rem] text-left rounded-[1.27rem] pt-[1.36rem] px-[1.68rem] pb-[2.76rem] flex flex-col">
+      <div className="xl:pb-[2.54rem]">
         <Label>{category.label}</Label>
       </div>
-      <h3 className="text-quibo-text text-[1.48rem] font-medium mb-[0.74rem] xl:text-[2.59rem] xl:pb-[3.33rem] xl:mb-0">
+      <h3 className="text-quibo-text font-medium text-[2.22rem] mb-[2.85rem]">
         {category.title}
       </h3>
-      <hr className="border-quibo-green-light border-t-2 mb-[0.74rem] xl:pb-[1.48rem] xl:mb-0" />
-      <h4 className="text-quibo-text text-[1.11rem] font-medium mb-[0.74rem] xl:text-[1.85rem] xl:pb-[2.37rem] xl:mb-0">
+      <hr className="border-quibo-green-light border-t-2 pb-[1.27rem] mb-0" />
+      <h4 className="text-quibo-text font-medium text-quibo-md mb-[2.03rem] pr-[5.57rem]">
         {category.subtitle}
       </h4>
-      <p className="text-quibo-text text-[1.11rem] leading-[1.4] mb-[1.48rem] xl:text-[0.93rem] xl:pb-[3.7rem] xl:pr-[10rem] xl:mb-0">
+      <p className="text-quibo-text leading-[1.4] text-[0.80rem] mb-[3.17rem] pr-[5.57rem] flex-grow">
         {category.description}
       </p>
       <Button
         text={category.cta.text}
         href={category.cta.href}
         variant="secondary"
-        className="xl:font-satoshi xl:font-medium xl:px-[7.04rem]"
+        className="w-[15rem]"
       />
     </div>
   )

@@ -72,7 +72,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             <a
               key={index}
               href={link.href}
-              className="text-quibo-text leading-none text-[0.94rem] font-medium"
+              className="text-quibo-text leading-none text-quibo-xs font-medium"
             >
               {link.label}
             </a>
@@ -115,7 +115,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                 key={index}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-[0.94rem]"
+                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-quibo-xs"
               >
                 {link.label}
               </a>

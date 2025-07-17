@@ -28,7 +28,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
   return (
     <section className="py-[7.41rem] bg-quibo-border overflow-hidden">
       <div className="max-w-[80%] lg:max-w-none mx-auto lg:mx-0">
-        <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[3.7rem] text-center">
+        <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[3.7rem] text-center">
           {clients.title}
         </h2>
 
@@ -59,10 +59,10 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
 
                   {/* Content with gray background */}
                   <div className="bg-quibo-gray-light p-[1.85rem] rounded-[0.44rem]">
-                    <h3 className="text-quibo-text text-[1.48rem] font-medium mb-[0.74rem]">
+                    <h3 className="text-quibo-text text-quibo-sm font-medium mb-[0.74rem]">
                       {client.title}
                     </h3>
-                    <p className="text-quibo-text text-[1.11rem] leading-[1.4]">
+                    <p className="text-quibo-text text-quibo-sm leading-[1.4]">
                       {client.description}
                     </p>
                   </div>

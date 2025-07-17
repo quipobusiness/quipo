@@ -9,9 +9,9 @@ interface SolutionsSectionProps {
 
 export function SolutionsSection({ solutions }: SolutionsSectionProps) {
   return (
-    <section id="soluciones" className="py-[7.41rem] px-[1.85rem] xl:pt-[2.96rem] xl:pb-[2.44rem]">
+    <section id="soluciones" className="py-[7.41rem] px-[1.85rem] xl:pt-[2.54rem] xl:pb-[2.09rem]">
       <div className="max-w-[80%] lg:max-w-[74rem] mx-auto xl:max-w-[87%]">
-        <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[3.7rem] text-center">
+        <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[3.7rem] text-center">
           {solutions.title1}
         </h2>
 
@@ -22,7 +22,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
           ))}
         </div>
 
-        <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[3.7rem] text-center">
+        <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[3.7rem] text-center">
           {solutions.title2}
         </h2>
 
@@ -38,10 +38,10 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
                 alt="Check"
                 className="absolute top-[1.85rem] left-[1.85rem] w-[3.63rem] h-auto"
               />
-              <h4 className="text-white text-[1.11rem] font-medium mt-[4.44rem] mb-[0.74rem]">
+              <h4 className="text-white text-quibo-sm font-medium mt-[4.44rem] mb-[0.74rem]">
                 {sector.title}
               </h4>
-              <p className="text-white text-[0.93rem] leading-[1.4]">
+              <p className="text-white text-quibo-xs leading-[1.4]">
                 {sector.description}
               </p>
             </div>

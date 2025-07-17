@@ -10,10 +10,10 @@ export function ContactSection({ contact }: ContactSectionProps) {
       <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
         {/* Header */}
         <div className="text-center mb-[3.7rem]">
-          <h2 className="text-white text-[2.96rem] font-normal leading-[1.1] mb-[1.85rem]">
+          <h2 className="text-white text-quibo-xl font-normal leading-[1.1] mb-[1.85rem]">
             {contact.title}
           </h2>
-          <p className="text-white text-[1.11rem] leading-[1.4]">
+          <p className="text-white text-quibo-sm leading-[1.4]">
             {contact.subtitle}
           </p>
         </div>
@@ -51,7 +51,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               <button
                 type="submit"
                 className="bg-quibo-border text-quibo-text rounded-full uppercase font-semibold
-                           text-[0.93rem] px-[2.22rem] py-[1.48rem]
+                           text-quibo-xs px-[2.22rem] py-[1.48rem]
                            hover:opacity-90 transition-opacity duration-200
                            flex items-center gap-[1.48rem]"
               >
@@ -69,11 +69,11 @@ export function ContactSection({ contact }: ContactSectionProps) {
           <div className="lg:w-[30%]">
             {/* Contact Info - Column */}
             <div className="space-y-[1.48rem] mb-[2.96rem]">
-              <h3 className="text-white text-[1.48rem] font-medium mb-[1.85rem]">
+              <h3 className="text-white text-quibo-sm font-medium mb-[1.85rem]">
                 {contact.info.title}
               </h3>
 
-              <div className="text-white text-[1.11rem] leading-[1.4]">
+              <div className="text-white text-quibo-sm leading-[1.4]">
                 <p className="mb-[0.74rem]">
                   <strong>Teléfono:</strong><br />
                   <a href={`tel:${contact.info.tel}`} className="hover:text-quibo-border">
@@ -154,7 +154,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
         {/* Copyright */}
         <div className="text-center mt-[3.7rem] pt-[1.85rem] border-t border-white/20">
-          <p className="text-white/70 text-[0.93rem]">
+          <p className="text-white/70 text-quibo-xs">
             {contact.copyright}
           </p>
         </div>

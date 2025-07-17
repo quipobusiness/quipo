@@ -12,10 +12,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         {/* Header Content - Centered */}
         <div className="flex flex-col items-center text-center mb-[3.7rem]">
           <Label>{services.mainLabel}</Label>
-          <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[1.85rem]">
+          <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[1.85rem]">
             <span dangerouslySetInnerHTML={{ __html: services.title }} />
           </h2>
-          <p className="text-quibo-text text-[1.11rem] leading-[1.4] max-w-[53rem]">
+          <p className="text-quibo-text text-quibo-sm leading-[1.4] max-w-[53rem]">
             {services.description}
           </p>
         </div>
@@ -41,10 +41,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               {/* Content */}
               <div className="flex-1 lg:w-1/2 text-center lg:text-left">
                 <Label>{category.label}</Label>
-                <h3 className="text-quibo-text text-[1.85rem] font-normal leading-[1.1] mb-[1.48rem]">
+                <h3 className="text-quibo-text text-quibo-md font-normal leading-[1.1] mb-[1.48rem]">
                   {category.title}
                 </h3>
-                <p className="text-quibo-text text-[1.11rem] leading-[1.4]">
+                <p className="text-quibo-text text-quibo-sm leading-[1.4]">
                   <span dangerouslySetInnerHTML={{ __html: category.description }} />
                 </p>
               </div>
@@ -57,7 +57,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
           <a
             href={services.cta.href}
             className="w-full bg-quibo-text text-white rounded-[0.44rem] uppercase font-semibold
-                       text-[1.11rem] px-[2.22rem] py-[1.85rem]
+                       text-quibo-sm px-[2.22rem] py-[1.85rem]
                        hover:opacity-90 transition-opacity duration-200
                        flex items-center justify-center gap-[1.48rem]"
           >

@@ -18,6 +18,13 @@ export default {
         'shipori': ['Shipori Mincho', 'serif'],
         'sans': ['Satoshi', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        'quibo-xl': '2.96rem',    // 80/27 - Main headings
+        'quibo-lg': '2.22rem',    // 60/27 - Large headings
+        'quibo-md': '1.63rem',    // 44/27 - Medium headings
+        'quibo-sm': '1.30rem',    // 35/27 - Small headings/body
+        'quibo-xs': '0.78rem',    // 21/27 - Small text/labels
+      },
       colors: {
         'quibo-text': '#695557',
         'quibo-border': '#ddf861',
