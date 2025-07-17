@@ -1,6 +1,7 @@
 import { Solutions } from '../types'
 import { Button } from './Button'
 import { Label } from './Label'
+import { CategoriesCard } from './CategoriesCard'
 
 interface SolutionsSectionProps {
   solutions: Solutions
@@ -8,8 +9,8 @@ interface SolutionsSectionProps {
 
 export function SolutionsSection({ solutions }: SolutionsSectionProps) {
   return (
-    <section id="soluciones" className="py-[7.41rem] px-[1.85rem]">
-      <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
+    <section id="soluciones" className="py-[7.41rem] px-[1.85rem] xl:pt-[2.96rem] xl:pb-[2.44rem]">
+      <div className="max-w-[80%] lg:max-w-[74rem] mx-auto xl:max-w-[87%]">
         <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[3.7rem] text-center">
           {solutions.title1}
         </h2>
@@ -17,27 +18,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         {/* Categories */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[0.67rem] mb-[3.7rem]">
           {solutions.categories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-quibo-gray-light p-[1.85rem] text-left"
-            >
-              <Label>{category.label}</Label>
-              <h3 className="text-quibo-text text-[1.48rem] font-medium mb-[0.74rem]">
-                {category.title}
-              </h3>
-              <hr className="border-quibo-green-light border-t-2 mb-[0.74rem]" />
-              <h4 className="text-quibo-text text-[1.11rem] font-medium mb-[0.74rem]">
-                {category.subtitle}
-              </h4>
-              <p className="text-quibo-text text-[1.11rem] leading-[1.4] mb-[1.48rem]">
-                {category.description}
-              </p>
-              <Button
-                text={category.cta.text}
-                href={category.cta.href}
-                variant="secondary"
-              />
-            </div>
+            <CategoriesCard key={index} category={category} />
           ))}
         </div>
 

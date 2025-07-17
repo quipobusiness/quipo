@@ -2,9 +2,10 @@ interface ButtonProps {
   text: string
   href: string
   variant: 'primary' | 'secondary'
+  className?: string
 }
 
-export function Button({ text, href, variant }: ButtonProps) {
+export function Button({ text, href, variant, className = '' }: ButtonProps) {
   const baseClasses = "inline-block rounded-full uppercase font-semibold text-[0.93rem] px-[2.22rem] py-[1.48rem] hover:opacity-90 transition-opacity duration-200"
 
   const variantClasses = {
@@ -15,7 +16,7 @@ export function Button({ text, href, variant }: ButtonProps) {
   return (
     <a
       href={href}
-      className={`${baseClasses} ${variantClasses[variant]}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
     >
       {text}
     </a>
