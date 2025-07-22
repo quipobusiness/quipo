@@ -12,7 +12,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
       <div className="max-w-[80%] mx-auto flex flex-col lg:flex-row gap-[3.7rem] mb-[4.81rem]">
         {/* Form - 70% width */}
         <div className="lg:w-[70%]">
-          <h2 className="text-white text-quibo-md font-normal mb-[2.18rem]">
+          <h2 className="text-white text-quibo-md font-medium mb-[2.18rem]">
             {contact.title}
           </h2>
           <form

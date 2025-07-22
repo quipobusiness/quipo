@@ -10,7 +10,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
   return (
     <section id="soluciones" className="pt-[4.37rem] pb-[2.7rem] xl:pt-[2.54rem] xl:pb-[2.09rem]">
       <div className="flex flex-col items-center max-w-[80%] lg:max-w-[87%] mx-auto">
-        <h2 className="text-quibo-text text-quibo-md font-normal leading-[1.1] mb-[1.85rem] text-center">
+        <h2 className="text-quibo-text text-quibo-md font-medium leading-[1.1] mb-[1.85rem] text-center">
           {solutions.title1}
         </h2>
         <img src="/svg/arrow-d.svg" alt="Solutions" className="w-[2.5rem] h-auto mb-[.88rem]" />
@@ -22,7 +22,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
           ))}
         </div>
 
-        <h2 className="text-quibo-text text-quibo-md font-normal leading-[1.1] mb-[3.7rem] text-center">
+        <h2 className="text-quibo-text text-quibo-md font-medium leading-[1.1] mb-[3.7rem] text-center">
           {solutions.title2}
         </h2>
 

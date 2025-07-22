@@ -17,7 +17,7 @@ export function Button({ text, href, type, variant, className = '', onClick, ico
 
   const variantClasses = {
     primary: "bg-quibo-border text-quibo-text font-medium",
-    secondary: "bg-quibo-text text-white"
+    secondary: "bg-quibo-text text-white font-medium"
   }
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${className} ${icon ? 'flex items-center gap-[1.48rem]' : ''}`

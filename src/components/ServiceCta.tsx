@@ -15,7 +15,7 @@ export function ServiceCta({ label, title, description, cta, img, bgImg, reverse
           {/* Content */}
           <div className="text-center lg:text-left lg:w-[55%]">
             <Label className="mb-[16rem] lg:mb-[5rem]">{label}</Label>
-            <h2 className="text-quibo-text text-quibo-lg font-normal leading-[1.1] mb-[2.59rem]">
+            <h2 className="text-quibo-text text-quibo-lg font-medium leading-[1.1] mb-[2.59rem]">
               <span dangerouslySetInnerHTML={{ __html: title }} />
             </h2>
             <p className="text-quibo-text text-quibo-sm leading-[1.4] mb-[2.59rem]">

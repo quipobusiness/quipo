@@ -7,7 +7,7 @@ interface NavigationProps {
 }
 
 export const Navigation = forwardRef<HTMLElement, NavigationProps>(
-  ({ navigation }, ref) => {
+  ({ navigation }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
 
     // Handle body scroll lock when mobile menu is open
@@ -48,8 +48,35 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
+        const scrollToSection = (href: string) => {
+      // Remove the # from href to get the element ID
+      const targetId = href.replace('#', '')
+      const targetElement = document.getElementById(targetId)
+
+      if (targetElement) {
+        // Get navbar height from CSS custom property or use fixed value
+        const navHeight = getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+        const navbarHeight = navHeight ? parseInt(navHeight) : 120 // fallback to 120px
+
+        // Add extra offset for better visual spacing
+        const offset = navbarHeight + 20
+
+        // Calculate target position
+        const targetPosition = targetElement.offsetTop - offset
+
+        // Smooth scroll to target with offset
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }
+
     return (
-      <nav ref={ref} className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border">
+            <nav
+        ref={forwardedRef}
+        className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border"
+      >
         <button
           onClick={scrollToTop}
           className="flex flex-shrink-0 relative z-[60]"
@@ -73,7 +100,11 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             <a
               key={index}
               href={link.href}
-              className="text-quibo-text leading-none text-quibo-xs font-medium"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection(link.href)
+              }}
+              className="text-quibo-text leading-none text-quibo-xs font-medium cursor-pointer"
             >
               {link.label}
             </a>
@@ -115,8 +146,12 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
               <a
                 key={index}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-quibo-xs"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setIsOpen(false)
+                  scrollToSection(link.href)
+                }}
+                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-quibo-xs cursor-pointer"
               >
                 {link.label}
               </a>

@@ -13,7 +13,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         {/* Header Content - Centered */}
         <div className="flex flex-col items-center text-center mb-[4rem]">
           <Label className="mb-[2.85rem]">{services.mainLabel}</Label>
-          <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[3rem]">
+          <h2 className="text-quibo-text text-quibo-xl font-medium leading-[1.1] mb-[3rem]">
             <span dangerouslySetInnerHTML={{ __html: services.title }} />
           </h2>
           <p className="text-quibo-text text-quibo-sm leading-[1.4] max-w-[37rem]">
@@ -53,7 +53,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         <div className="w-full">
           <a
             href={services.cta.href}
-            className="w-full bg-quibo-text text-white rounded-[1.48rem] uppercase font-semibold
+            className="w-full bg-quibo-text text-white rounded-[1.48rem] uppercase font-medium
                        text-quibo-sm px-[2.22rem] py-[3.22rem]
                        hover:opacity-90 transition-opacity duration-200
                        flex items-center justify-center gap-[1.48rem]"
