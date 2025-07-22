@@ -140,7 +140,6 @@ export interface ContactInfo {
 
 export interface ContactSection {
   title: string
-  subtitle: string
   form: ContactForm
   cta: string
   info: ContactInfo
