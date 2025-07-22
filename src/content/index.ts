@@ -30,10 +30,27 @@ export const content: LandingPageContent = {
       { label: "SERVICIOS", href: "#servicios" },
       { label: "CONTACTO", href: "#contacto" }
     ],
-    whatsapp: {
-      icon: "/svg/social-wa.svg",
-      href: "https://wa.me/your-number",
-      alt: "WhatsApp"
+    social: {
+      facebook: {
+        icon: "/svg/social-fb.svg",
+        href: "https://www.facebook.com/quipo.mx",
+        alt: "Facebook"
+      },
+      instagram: {
+        icon: "/svg/social-ig.svg",
+        href: "https://www.instagram.com/quipo.mx",
+        alt: "Instagram"
+      },
+      whatsapp: {
+        icon: "/svg/social-wa.svg",
+        href: "https://wa.me/your-number",
+        alt: "WhatsApp"
+      },
+      youtube: {
+        icon: "/svg/social-yt.svg",
+        href: "https://www.youtube.com/quipo.mx",
+        alt: "Youtube"
+      }
     }
   },
 
@@ -113,17 +130,18 @@ export const content: LandingPageContent = {
   // Servicios
   services: {
     mainLabel: "Servicios",
-    title: "Inteligencia Fiscal y de <em>Negocios</em>",
+    title: "Inteligencia Fiscal<br />y de <em>Negocios</em>",
     description: "Entendemos de personas y de números, no somos amigos del SAT ni del IMSS pero tampoco son nuestros enemigos, aun así, los conocemos muuuy de cerca.",
+    bgImg: "/img/accent.webp",
     categories: [
       {
         label: "Contabilidad",
-        title: "Contabilidad y cumplimiento fiscal",
+        title: "Contabilidad y<br />cumplimiento fiscal",
         img: {
           src: "/img/contabilidad.webp",
           alt: "Contabilidad",
         },
-        description: "Nos encargamos de tus números para que no te preocupes por el SAT. Llevamos tu contabilidad al día, revisamos que todo esté en orden y corregimos lo que haga falta. <br />Tú enfócate en vender, nosotros en mantener tu negocio en regla.",
+        description: "Nos encargamos de tus números para que no te preocupes por el SAT. Llevamos tu contabilidad al día, revisamos que todo esté en orden y corregimos lo que haga falta.<br /><br />Tú enfócate en vender, nosotros en mantener tu negocio en regla.",
       },
       {
         label: "Facturación",
@@ -141,7 +159,7 @@ export const content: LandingPageContent = {
           src: "/img/nomina.webp",
           alt: "Nóminas e IMSS",
         },
-        description: "Procesamos todo lo relacionado con la nómina e IMSS: incidencias, finiquitos, altas, bajas, modificaciones de salario, cálculo, timbrado y envío de recibos de nómina.<br />Calculamos y presentamos primas de riesgo, diferencias, entre otros. <br />Para que no te preocupes por multas."
+        description: "Procesamos todo lo relacionado con la nómina e IMSS: incidencias, finiquitos, altas, bajas, modificaciones de salario, cálculo, timbrado y envío de recibos de nómina.<br /><br />Calculamos y presentamos primas de riesgo, diferencias, entre otros.<br /><br />Para que no te preocupes por multas."
       }
     ],
     cta: {
@@ -159,7 +177,7 @@ export const content: LandingPageContent = {
           alt: "Molar House",
         },
         title: "Excelente servicio, profesionales y con amplia experiencia.",
-        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. Juan carlos, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br />La Lic. Valeria, por su parte, nos apoya de manera      excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo    conocimiento en su área."
+        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. Juan carlos, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br /><br />La Lic. Valeria, por su parte, nos apoya de manera excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo conocimiento en su área."
       },
       {
         logo: {
@@ -167,7 +185,7 @@ export const content: LandingPageContent = {
           alt: "Arquitectura Imagen Pintura",
         },
         title: "Resultados evidentes y excelentes.",
-        description: "Nuestra empresa atravesaba una situación fiscal     complicada debido a la falta de una asesoría contable confiable. Tomar la decisión de cambiar de despacho no fue fácil, pero en muy poco tiempo los resultados fueron evidentes y excelentes. Logramos sanear por completo nuestra situación fiscal y, desde entonces, recibimos una atención puntual, acertada y profesional. Hoy tenemos plena confianza en la        asesoría que recibimos y la tranquilidad de estar     cumpliendo correctamente con todas nuestras obligaciones."
+        description: "Nuestra empresa atravesaba una situación fiscal complicada debido a la falta de una asesoría contable confiable. Tomar la decisión de cambiar de despacho no fue fácil, pero en muy poco tiempo los resultados fueron evidentes y excelentes. Logramos sanear por completo nuestra situación fiscal y, desde entonces, recibimos una atención puntual, acertada y profesional. Hoy tenemos plena confianza en la asesoría que recibimos y la tranquilidad de estar cumpliendo correctamente con todas nuestras obligaciones."
       },
       {
         logo: {
@@ -183,7 +201,7 @@ export const content: LandingPageContent = {
           alt: "Elevanova - Venta y renta de maquinaria",
         },
         title: "Amplio conocimiento y experiencía.",
-        description: "El Lic. Juan Carlos Pedroza nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
+        description: "El Lic. Juan Carlos Pedroza nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br /><br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
       },
       {
         logo: {
@@ -191,7 +209,7 @@ export const content: LandingPageContent = {
           alt: "Vip Pinturas - Todo para el carrocero pintor",
         },
         title: "Atención y asesoría constante.",
-        description: "HEs un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
+        description: "HEs un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
       }
     ]
   },

@@ -9,8 +9,8 @@ export default {
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
-      'xl': '1400px',
-      '2xl': '1700px',
+      'xl': '1500px',
+      '2xl': '1800px',
     },
     extend: {
       fontFamily: {
@@ -19,11 +19,11 @@ export default {
         'sans': ['Satoshi', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'quibo-xl': '2.96rem',    // 80/27 - Main headings
-        'quibo-lg': '2.22rem',    // 60/27 - Large headings
-        'quibo-md': '1.63rem',    // 44/27 - Medium headings
-        'quibo-sm': '1.30rem',    // 35/27 - Small headings/body
-        'quibo-xs': '0.78rem',    // 21/27 - Small text/labels
+        'quibo-xl': '3.33rem',    // 90/27 - Main headings
+        'quibo-lg': '2.59rem',    // 70/27 - Large headings
+        'quibo-md': '1.85rem',    // 50/27 - Medium headings
+        'quibo-sm': '1.48rem',    // 40/27 - Small headings/body
+        'quibo-xs': '0.93rem',    // 25/27 - Small text/labels
       },
       colors: {
         'quibo-text': '#695557',

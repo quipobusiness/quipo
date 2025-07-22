@@ -1,4 +1,5 @@
 import { ContactSection as ContactSectionType } from '../types'
+import { SocialMedia } from './SocialMedia'
 
 interface ContactSectionProps {
   contact: ContactSectionType
@@ -96,59 +97,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
             </div>
 
             {/* Social Icons - Row */}
-            <div className="flex gap-[1.48rem]">
-              <a
-                href={contact.info.social.facebook.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-opacity"
-              >
-                <img
-                  src={contact.info.social.facebook.icon}
-                  alt={contact.info.social.facebook.alt}
-                  className="w-[2.22rem] h-auto"
-                />
-              </a>
-
-              <a
-                href={contact.info.social.instagram.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-opacity"
-              >
-                <img
-                  src={contact.info.social.instagram.icon}
-                  alt={contact.info.social.instagram.alt}
-                  className="w-[2.22rem] h-auto"
-                />
-              </a>
-
-              <a
-                href={contact.info.social.whatsapp.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-opacity"
-              >
-                <img
-                  src={contact.info.social.whatsapp.icon}
-                  alt={contact.info.social.whatsapp.alt}
-                  className="w-[2.22rem] h-auto"
-                />
-              </a>
-
-              <a
-                href={contact.info.social.youtube.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-opacity"
-              >
-                <img
-                  src={contact.info.social.youtube.icon}
-                  alt={contact.info.social.youtube.alt}
-                  className="w-[2.22rem] h-auto"
-                />
-              </a>
-            </div>
+            <SocialMedia social={contact.info.social} />
           </div>
         </div>
 

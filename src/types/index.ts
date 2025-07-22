@@ -12,10 +12,11 @@ export interface Navigation {
   logo: Image
   logoLong: Image,
   links: NavigationLink[]
-  whatsapp: {
-    icon: string
-    href: string
-    alt: string
+  social: {
+    facebook: SocialIcon
+    instagram: SocialIcon
+    whatsapp: SocialIcon
+    youtube: SocialIcon
   }
 }
 
@@ -83,6 +84,7 @@ export interface Services {
   mainLabel: string
   title: string
   description: string
+  bgImg: string
   categories: ServiceCategory[]
   cta: {
     text: string

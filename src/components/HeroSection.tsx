@@ -18,12 +18,12 @@ export function HeroSection({ hero }: HeroSectionProps) {
         <img
           src={hero.logo.src}
           alt={hero.logo.alt}
-          className="w-[20.74rem] h-auto mb-8 max-w-full"
+          className="w-[20.74rem] h-auto mb-[5.5rem] max-w-full"
         />
 
         {/* Title */}
         <h1
-          className="text-white text-center text-quibo-xl font-normal mb-12 leading-[1.1] max-w-full"
+          className="text-white text-center text-quibo-xl font-normal mb-[2.59rem] leading-[1.1] max-w-full"
           dangerouslySetInnerHTML={{ __html: hero.title }}
         />
 

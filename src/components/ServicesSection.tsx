@@ -7,15 +7,16 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section id="servicios" className="py-[7.41rem] px-[1.85rem]">
+    <section id="servicios" className="my-[3.7rem] max-w-[80%] mx-auto bg-[right_top] bg-[length: 18.3rem_auto]  bg-no-repeat"
+    style={{ backgroundImage: `url(${services.bgImg})` }}>
       <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
         {/* Header Content - Centered */}
-        <div className="flex flex-col items-center text-center mb-[3.7rem]">
-          <Label>{services.mainLabel}</Label>
-          <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[1.85rem]">
+        <div className="flex flex-col items-center text-center mb-[4rem]">
+          <Label className="mb-[2.85rem]">{services.mainLabel}</Label>
+          <h2 className="text-quibo-text text-quibo-xl font-normal leading-[1.1] mb-[3rem]">
             <span dangerouslySetInnerHTML={{ __html: services.title }} />
           </h2>
-          <p className="text-quibo-text text-quibo-sm leading-[1.4] max-w-[53rem]">
+          <p className="text-quibo-text text-quibo-sm leading-[1.4] max-w-[37rem]">
             {services.description}
           </p>
         </div>
@@ -25,12 +26,12 @@ export function ServicesSection({ services }: ServicesSectionProps) {
           {services.categories.map((category, index) => (
             <div
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-[3.7rem] ${
+              className={`flex flex-col lg:flex-row items-start gap-[4rem] ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               {/* Image */}
-              <div className="flex-1 lg:w-1/2">
+              <div className="flex-1">
                 <img
                   src={category.img.src}
                   alt={category.img.alt}
@@ -39,14 +40,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               </div>
 
               {/* Content */}
-              <div className="flex-1 lg:w-1/2 text-center lg:text-left">
-                <Label>{category.label}</Label>
-                <h3 className="text-quibo-text text-quibo-md font-normal leading-[1.1] mb-[1.48rem]">
-                  {category.title}
-                </h3>
-                <p className="text-quibo-text text-quibo-sm leading-[1.4]">
-                  <span dangerouslySetInnerHTML={{ __html: category.description }} />
-                </p>
+              <div className="flex-1 text-center lg:text-left">
+                <Label className="mb-[1.77rem]">{category.label}</Label>
+                <h3 className="text-quibo-text text-quibo-md font-medium mb-[1.59rem]" dangerouslySetInnerHTML={{ __html: category.title }} />
+                <p className="text-quibo-text text-quibo-xs big-break w-[90%] leading-[1.1]" dangerouslySetInnerHTML={{ __html: category.description }} />
               </div>
             </div>
           ))}
@@ -56,8 +53,8 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         <div className="w-full">
           <a
             href={services.cta.href}
-            className="w-full bg-quibo-text text-white rounded-[0.44rem] uppercase font-semibold
-                       text-quibo-sm px-[2.22rem] py-[1.85rem]
+            className="w-full bg-quibo-text text-white rounded-[1.48rem] uppercase font-semibold
+                       text-quibo-sm px-[2.22rem] py-[3.22rem]
                        hover:opacity-90 transition-opacity duration-200
                        flex items-center justify-center gap-[1.48rem]"
           >
@@ -65,7 +62,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             <img
               src="/svg/arrow-em.svg"
               alt="Arrow"
-              className="w-[1.48rem] h-auto"
+              className="w-[2.55rem] h-auto"
             />
           </a>
         </div>

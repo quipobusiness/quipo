@@ -1,10 +1,11 @@
 interface LabelProps {
-  children: React.ReactNode
+  children: React.ReactNode,
+  className?: string
 }
 
-export function Label({ children }: LabelProps) {
+export function Label({ children, className }: LabelProps) {
   return (
-    <span className="bg-quibo-green-light text-quibo-green-dark text-quibo-xs font-medium uppercase tracking-wider mb-[1.48rem] inline-block rounded-[0.44rem] px-[1.04rem] py-[0.52rem]">
+    <span className={`bg-quibo-green-light text-quibo-green-dark text-quibo-xs font-medium uppercase tracking-wide inline-block rounded-[0.44rem] py-[0.55rem] px-[1.1rem] leading-none ${className}`}>
       {children}
     </span>
   )

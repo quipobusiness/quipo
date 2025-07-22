@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef } from 'react'
 import { Navigation as NavigationType } from '../types'
+import { SocialMedia } from './SocialMedia'
 
 interface NavigationProps {
   navigation: NavigationType
@@ -78,14 +79,14 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             </a>
           ))}
           <a
-            href={navigation.whatsapp.href}
+            href={navigation.social.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
           >
             <img
-              src={navigation.whatsapp.icon}
-              alt={navigation.whatsapp.alt}
+              src={navigation.social.whatsapp.icon}
+              alt={navigation.social.whatsapp.alt}
               className="w-[2.34rem] h-auto -mb-[0.78rem]"
             />
           </a>
@@ -108,8 +109,8 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
         </div>
 
         {/* Mobile menu */}
-        <div className={`lg:hidden fixed inset-0 bg-quibo-bg transition-all duration-300 z-[55] ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-[10%] opacity-0'}`} style={{ top: '0', paddingTop: '7.81rem' }}>
-          <div className="space-y-6 pl-[0.63rem] pr-[0.63rem] pt-6 pb-6 md:pl-[4.25rem] md:pr-[3.94rem]">
+        <div className={`lg:hidden fixed inset-0 bg-quibo-bg transition-all duration-300 z-[55] ${isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-[10%] opacity-0 pointer-events-none'}`} style={{ top: '0', paddingTop: '7.81rem' }}>
+          <div className="space-y-6 pl-[4.25rem] pr-[3.94rem] pt-6 pb-6">
             {navigation.links.map((link, index) => (
               <a
                 key={index}
@@ -120,20 +121,12 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                 {link.label}
               </a>
             ))}
-            <a
-              href={navigation.whatsapp.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center px-3 py-2 font-medium text-quibo-text hover:opacity-75 transition-opacity duration-200"
-            >
-              <img
-                src={navigation.whatsapp.icon}
-                alt={navigation.whatsapp.alt}
-                className="w-[2.34rem] h-auto flex-shrink-0"
-                style={{ minWidth: '2.34rem', maxWidth: '2.34rem' }}
+            <div onClick={() => setIsOpen(false)} className="px-3 py-2">
+              <SocialMedia
+                social={navigation.social}
+                iconSize="w-[2.34rem]"
               />
-            </a>
+            </div>
           </div>
         </div>
       </nav>

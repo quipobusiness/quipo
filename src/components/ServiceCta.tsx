@@ -5,33 +5,26 @@ import { Label } from './Label'
 export function ServiceCta({ label, title, description, cta, img, bgImg, reverse }: ServiceCTAProps) {
   return (
     <section
-      className="py-[7.41rem] px-[1.85rem] bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      <div className="max-w-[80%] mx-auto lg:max-w-[53rem]">
-        <Label>{label}</Label>
-        <div className={`flex flex-col lg:flex-row items-center gap-[3.7rem] mx-auto ${reverse ? 'lg:flex-row-reverse' : ''}`}>
+      <div className={`max-w-[80%] mx-auto bg-no-repeat pt-[4.48rem] pb-[7.62rem] bg-[center_25%] bg-[length:14rem_auto] lg:bg-[right_center] lg:bg-[length:auto_24rem] ${reverse ? 'lg:bg-[left_center]' : ''}` }
+        style={{ backgroundImage: `url(${img.src})` }}
+      >
+        <div className={`flex flex-col justify-start mx-auto ${reverse ? 'lg:flex-row-reverse' : ''}`}>
           {/* Content */}
-          <div className="flex-1 text-center lg:text-left lg:w-[60%]">
-            <h2 className="text-quibo-text text-[2.96rem] font-normal leading-[1.1] mb-[1.85rem]">
+          <div className="text-center lg:text-left lg:w-[55%]">
+            <Label className="mb-[16rem] lg:mb-[5rem]">{label}</Label>
+            <h2 className="text-quibo-text text-quibo-lg font-normal leading-[1.1] mb-[2.59rem]">
               <span dangerouslySetInnerHTML={{ __html: title }} />
             </h2>
-            <p className="text-quibo-text text-[1.11rem] leading-[1.4] mb-[2.96rem]">
+            <p className="text-quibo-text text-quibo-sm leading-[1.4] mb-[2.59rem]">
               <span dangerouslySetInnerHTML={{ __html: description }} />
             </p>
             <Button
               text={cta.text}
               href={cta.href}
               variant="secondary"
-            />
-          </div>
-
-          {/* Image */}
-          <div className="flex-1">
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-auto rounded-lg"
             />
           </div>
         </div>
