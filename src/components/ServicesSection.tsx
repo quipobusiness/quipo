@@ -7,7 +7,7 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section id="servicios" className="my-[3.7rem] max-w-[80%] mx-auto bg-[right_top] bg-[length: 18.3rem_auto]  bg-no-repeat"
+    <section id="servicios" className="my-[3.7rem] max-w-[80%] mx-auto bg-[right_top] bg-[length:14rem_auto] lg:bg-[length:18.3rem_auto]  bg-no-repeat"
     style={{ backgroundImage: `url(${services.bgImg})` }}>
       <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
         {/* Header Content - Centered */}
