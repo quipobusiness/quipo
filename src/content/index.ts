@@ -217,7 +217,6 @@ export const content: LandingPageContent = {
   // Contact form
   contact: {
     title: "Cuéntanos sobre tu negocio",
-    subtitle: "Completa el formulario y nos pondremos en contacto contigo.",
     form: {
       formspark: {
         actionUrl: "https://submit-form.com/your-form-id", // Replace with your formspark URL

@@ -8,7 +8,7 @@ export function ServiceCta({ label, title, description, cta, img, bgImg, reverse
       className="bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      <div className={`max-w-[80%] mx-auto bg-no-repeat pt-[4.48rem] pb-[7.62rem] bg-[center_25%] bg-[length:14rem_auto] lg:bg-[right_center] lg:bg-[length:auto_24rem] ${reverse ? 'lg:bg-[left_center]' : ''}` }
+      <div className={`max-w-[80%] mx-auto bg-no-repeat pt-[4.48rem] pb-[7.62rem] bg-[center_25%] bg-[length:14rem_auto] lg:bg-[length:auto_24rem] ${reverse ? 'lg:bg-[left_center]' : 'lg:bg-[right_center]'}` }
         style={{ backgroundImage: `url(${img.src})` }}
       >
         <div className={`flex flex-col justify-start mx-auto ${reverse ? 'lg:flex-row-reverse' : ''}`}>

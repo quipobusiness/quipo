@@ -1,5 +1,6 @@
 import { ContactSection as ContactSectionType } from '../types'
 import { SocialMedia } from './SocialMedia'
+import { Button } from './Button'
 
 interface ContactSectionProps {
   contact: ContactSectionType
@@ -7,107 +8,81 @@ interface ContactSectionProps {
 
 export function ContactSection({ contact }: ContactSectionProps) {
   return (
-    <section id="contacto" className="py-[7.41rem] px-[1.85rem] bg-quibo-text">
-      <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
-        {/* Header */}
-        <div className="text-center mb-[3.7rem]">
-          <h2 className="text-white text-quibo-xl font-normal leading-[1.1] mb-[1.85rem]">
+    <section id="contacto" className="pt-[5.48rem] pb-[1.62rem] bg-quibo-text flex flex-col">
+      <div className="max-w-[80%] mx-auto flex flex-col lg:flex-row gap-[3.7rem] mb-[4.81rem]">
+        {/* Form - 70% width */}
+        <div className="lg:w-[70%]">
+          <h2 className="text-white text-quibo-md font-normal mb-[2.18rem]">
             {contact.title}
           </h2>
-          <p className="text-white text-quibo-sm leading-[1.4]">
-            {contact.subtitle}
-          </p>
+          <form
+            action={contact.form.formspark.actionUrl}
+            method="POST"
+            className="flex flex-col gap-[0.55rem] items-end"
+          >
+            {contact.form.fields.map((field, index) => (
+              <div key={index} className="w-full">
+                {field.type === 'textarea' ? (
+                  <textarea
+                    name={field.name}
+                    placeholder={field.label}
+                    required={field.required}
+                    rows={4}
+                    className="w-full px-[1.48rem] py-[0.48rem] bg-quibo-input-bg text-white placeholder-white/70 rounded-[0.7rem] border-none focus:outline-none focus:ring-2 focus:ring-quibo-border"
+                  />
+                ) : (
+                  <input
+                    name={field.name}
+                    type={field.type}
+                    placeholder={field.label}
+                    required={field.required}
+                    className="w-full px-[1.48rem] py-[0.48rem] bg-quibo-input-bg text-white placeholder-white/70 rounded-[0.7rem] border-none focus:outline-none focus:ring-2 focus:ring-quibo-border"
+                  />
+                )}
+              </div>
+            ))}
+
+            <Button
+              text={contact.cta}
+              type="submit"
+              variant="primary"
+              className="px-[2.22rem]"
+              icon={{
+                src: "/svg/arrow-r.svg",
+                alt: "Arrow",
+                className: "w-[2.18rem] h-auto -my-[1rem]"
+              }}
+            />
+          </form>
         </div>
-
-        <div className="flex flex-col lg:flex-row gap-[3.7rem]">
-          {/* Form - 70% width */}
-          <div className="lg:w-[70%]">
-            <form
-              action={contact.form.formspark.actionUrl}
-              method="POST"
-              className="space-y-[1.48rem]"
-            >
-              {contact.form.fields.map((field, index) => (
-                <div key={index}>
-                  {field.type === 'textarea' ? (
-                    <textarea
-                      name={field.name}
-                      placeholder={field.label}
-                      required={field.required}
-                      rows={4}
-                      className="w-full px-[1.11rem] py-[0.93rem] bg-quibo-input-bg text-white placeholder-white/70 rounded-[0.44rem] border-none focus:outline-none focus:ring-2 focus:ring-quibo-border"
-                    />
-                  ) : (
-                    <input
-                      name={field.name}
-                      type={field.type}
-                      placeholder={field.label}
-                      required={field.required}
-                      className="w-full px-[1.11rem] py-[0.93rem] bg-quibo-input-bg text-white placeholder-white/70 rounded-[0.44rem] border-none focus:outline-none focus:ring-2 focus:ring-quibo-border"
-                    />
-                  )}
-                </div>
-              ))}
-
-              <button
-                type="submit"
-                className="bg-quibo-border text-quibo-text rounded-full uppercase font-semibold
-                           text-quibo-xs px-[2.22rem] py-[1.48rem]
-                           hover:opacity-90 transition-opacity duration-200
-                           flex items-center gap-[1.48rem]"
-              >
-                {contact.cta}
-                <img
-                  src="/svg/arrow-r.svg"
-                  alt="Arrow"
-                  className="w-[1.48rem] h-auto"
-                />
-              </button>
-            </form>
-          </div>
 
           {/* Info Panel - 30% width */}
-          <div className="lg:w-[30%]">
-            {/* Contact Info - Column */}
-            <div className="space-y-[1.48rem] mb-[2.96rem]">
-              <h3 className="text-white text-quibo-sm font-medium mb-[1.85rem]">
-                {contact.info.title}
-              </h3>
+        <div className="lg:w-[30%]">
+          {/* Contact Info - Column */}
+          <div className="mb-[3.2rem]">
+            <h3 className="text-white text-quibo-md font-medium mb-[3.2rem]">
+              {contact.info.title}
+            </h3>
 
-              <div className="text-white text-quibo-sm leading-[1.4]">
-                <p className="mb-[0.74rem]">
-                  <strong>Teléfono:</strong><br />
-                  <a href={`tel:${contact.info.tel}`} className="hover:text-quibo-border">
-                    {contact.info.tel}
-                  </a>
-                </p>
-
-                <p className="mb-[0.74rem]">
-                  <strong>Email:</strong><br />
-                  <a href={`mailto:${contact.info.email}`} className="hover:text-quibo-border">
-                    {contact.info.email}
-                  </a>
-                </p>
-
-                <p>
-                  <strong>Dirección:</strong><br />
-                  {contact.info.address}
-                </p>
-              </div>
+            <div className="text-white text-quibo-xs ">
+              <a href={`tel:${contact.info.tel}`} className="block hover:text-quibo-border mb-[1.59rem]">
+                {contact.info.tel}
+              </a>
+              <a href={`mailto:${contact.info.email}`} className="block hover:text-quibo-border mb-[1.59rem]">
+                {contact.info.email}
+              </a>
+              {contact.info.address}
             </div>
-
-            {/* Social Icons - Row */}
-            <SocialMedia social={contact.info.social} />
           </div>
-        </div>
 
-        {/* Copyright */}
-        <div className="text-center mt-[3.7rem] pt-[1.85rem] border-t border-white/20">
-          <p className="text-white/70 text-quibo-xs">
-            {contact.copyright}
-          </p>
+          {/* Social Icons - Row */}
+          <SocialMedia social={contact.info.social} />
         </div>
       </div>
+      {/* Copyright */}
+      <p className="text-white/70 text-quibo-xs mx-[2.77rem]">
+        {contact.copyright}
+      </p>
     </section>
   )
 }
