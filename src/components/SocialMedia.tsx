@@ -1,4 +1,5 @@
 import { SocialIcon } from '../types'
+import { resolveAssetPath } from '../utils'
 
 interface SocialMediaProps {
   social: {
@@ -30,7 +31,7 @@ export function SocialMedia({ social, className = '', iconSize = 'w-[2.22rem]' }
           className="hover:opacity-75 transition-opacity duration-200"
         >
           <img
-            src={data.icon}
+            src={resolveAssetPath(data.icon)}
             alt={data.alt}
             className={`${iconSize} h-auto`}
           />

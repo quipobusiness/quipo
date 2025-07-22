@@ -1,5 +1,6 @@
 import { Services } from '../types'
 import { Label } from './Label'
+import { resolveAssetPath } from '../utils'
 
 interface ServicesSectionProps {
   services: Services
@@ -8,7 +9,7 @@ interface ServicesSectionProps {
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section id="servicios" className="my-[3.7rem] max-w-[80%] mx-auto bg-[right_top] bg-[length:14rem_auto] lg:bg-[length:18.3rem_auto]  bg-no-repeat"
-    style={{ backgroundImage: `url(${services.bgImg})` }}>
+    style={{ backgroundImage: `url(${resolveAssetPath(services.bgImg)})` }}>
       <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
         {/* Header Content - Centered */}
         <div className="flex flex-col items-center text-center mb-[4rem]">
@@ -33,7 +34,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               {/* Image */}
               <div className="flex-1">
                 <img
-                  src={category.img.src}
+                  src={resolveAssetPath(category.img.src)}
                   alt={category.img.alt}
                   className="w-full h-auto rounded-lg"
                 />

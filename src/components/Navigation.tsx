@@ -1,6 +1,7 @@
 import { useState, useEffect, forwardRef } from 'react'
 import { Navigation as NavigationType } from '../types'
 import { SocialMedia } from './SocialMedia'
+import { resolveAssetPath } from '../utils'
 
 interface NavigationProps {
   navigation: NavigationType
@@ -83,13 +84,13 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
         >
           {/* Regular logo for screens < 500px */}
           <img
-            src={navigation.logo.src}
+            src={resolveAssetPath(navigation.logo.src)}
             alt={navigation.logo.alt}
             className="h-[2.5rem] md:h-[3.91rem] w-auto md:-mb-[0.9rem] min-[500px]:hidden"
           />
           {/* Long logo for screens >= 500px */}
           <img
-            src={navigation.logoLong.src}
+            src={resolveAssetPath(navigation.logoLong.src)}
             alt={navigation.logoLong.alt}
             className="h-[2.5rem] md:h-[3.91rem] w-auto md:-mb-[0.9rem] max-[499px]:hidden"
           />
@@ -116,7 +117,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
           >
             <img
-              src={navigation.social.whatsapp.icon}
+              src={resolveAssetPath(navigation.social.whatsapp.icon)}
               alt={navigation.social.whatsapp.alt}
               className="w-[2.34rem] h-auto -mb-[0.78rem]"
             />

@@ -1,6 +1,7 @@
 import { ContactSection as ContactSectionType } from '../types'
 import { SocialMedia } from './SocialMedia'
 import { Button } from './Button'
+import { resolveAssetPath } from '../utils'
 
 interface ContactSectionProps {
   contact: ContactSectionType
@@ -48,7 +49,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               variant="primary"
               className="px-[2.22rem]"
               icon={{
-                src: "/svg/arrow-r.svg",
+                src: resolveAssetPath("/svg/arrow-r.svg"),
                 alt: "Arrow",
                 className: "w-[2.18rem] h-auto -my-[1rem]"
               }}

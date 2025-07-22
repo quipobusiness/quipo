@@ -1,6 +1,7 @@
 import { Solutions } from '../types'
 import { CategoriesCard } from './CategoriesCard'
 import { SectorCard } from './SectorCard'
+import { resolveAssetPath } from '../utils'
 
 interface SolutionsSectionProps {
   solutions: Solutions
@@ -13,7 +14,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         <h2 className="text-quibo-text text-quibo-md font-medium leading-[1.1] mb-[1.85rem] text-center">
           {solutions.title1}
         </h2>
-        <img src="/svg/arrow-d.svg" alt="Solutions" className="w-[2.5rem] h-auto mb-[.88rem]" />
+        <img src={resolveAssetPath("/svg/arrow-d.svg")} alt="Solutions" className="w-[2.5rem] h-auto mb-[.88rem]" />
 
         {/* Categories */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[0.67rem] mb-[3.7rem]">

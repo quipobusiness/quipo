@@ -1,5 +1,6 @@
 import { HeroSection as HeroSectionType } from '../types'
 import { Button } from './Button'
+import { resolveAssetPath } from '../utils'
 
 interface HeroSectionProps {
   hero: HeroSectionType
@@ -10,13 +11,13 @@ export function HeroSection({ hero }: HeroSectionProps) {
     <section
       className="min-h-[60vh] pt-[5.6rem] pb-[7.7rem] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center"
       style={{
-        backgroundImage: `url(${hero.bgImage})`
+        backgroundImage: `url(${resolveAssetPath(hero.bgImage)})`
       }}
     >
       <div className="flex flex-col items-center max-w-[80%]">
         {/* Logo */}
         <img
-          src={hero.logo.src}
+          src={resolveAssetPath(hero.logo.src)}
           alt={hero.logo.alt}
           className="w-[20.74rem] h-auto mb-[5.5rem] max-w-full"
         />

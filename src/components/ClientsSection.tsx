@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Clients } from '../types'
+import { resolveAssetPath } from '../utils'
 
 interface ClientsSectionProps {
   clients: Clients
@@ -79,7 +80,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
                   {/* Logo with white background */}
                   <div className="bg-white rounded-[1.6rem] h-[10.6rem] flex items-center justify-center">
                     <img
-                      src={client.logo.src}
+                      src={resolveAssetPath(client.logo.src)}
                       alt={client.logo.alt}
                       className="max-w-full max-h-[3.7rem] w-auto h-auto"
                     />
@@ -103,14 +104,14 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
               onClick={prevSlide}
               className="hover:opacity-75 transition-opacity"
             >
-              <img src="/svg/carousel-left.svg" alt="Previous" className="h-full w-auto" />
+              <img src={resolveAssetPath("/svg/carousel-left.svg")} alt="Previous" className="h-full w-auto" />
             </button>
 
             <button
               onClick={nextSlide}
               className="hover:opacity-75 transition-opacity"
             >
-              <img src="/svg/carousel-right.svg" alt="Next" className="h-full w-auto" />
+              <img src={resolveAssetPath("/svg/carousel-right.svg")} alt="Next" className="h-full w-auto" />
             </button>
           </div>
         </div>
