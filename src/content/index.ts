@@ -219,7 +219,7 @@ export const content: LandingPageContent = {
     title: "Cuéntanos sobre tu negocio",
     form: {
       formspark: {
-        actionUrl: "https://submit-form.com/your-form-id", // Replace with your formspark URL
+        actionUrl: "https://submit-form.com/XBdj2sBul", // Replace with your formspark URL
       },
       fields: [
         { name: "name", label: "Nombre", type: "text", required: true },
