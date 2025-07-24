@@ -23,9 +23,8 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
           ))}
         </div>
 
-        <h2 className="text-quibo-text text-quibo-md font-medium leading-[1.1] mb-[3.7rem] text-center">
-          {solutions.title2}
-        </h2>
+        <h2 className="text-quibo-text text-quibo-md font-medium leading-[1.1] mb-[2.2rem] text-center" dangerouslySetInnerHTML={{ __html: solutions.title2 }} />
+
 
         {/* Sectors */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-[0.67rem]">

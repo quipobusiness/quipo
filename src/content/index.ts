@@ -117,7 +117,7 @@ export const content: LandingPageContent = {
     title: "En paz con tus <em>impuestos</em>",
     description: "Simplificamos el proceso de facturación electrónica para tu empresa. Cumplimos con todos los requisitos fiscales mientras automatizamos tus procesos para mayor eficiencia y control.",
     cta: {
-      text: "Empezar ahora",
+      text: "Agenda una cita",
       href: "#contacto"
     },
     img: {

@@ -13,10 +13,8 @@ export function SectorCard({ sector }: SectorCardProps) {
         alt="Check"
         className=" w-[3.63rem] h-auto"
       />
-      <h4 className="text-white text-quibo-sm font-medium">
-        {sector.title}
-      </h4>
-      <p className="text-white text-quibo-xs leading-[1.4]">
+      <h4 className="text-white text-quibo-md leading-[1.1] font-medium" dangerouslySetInnerHTML={{ __html: sector.title }} />
+      <p className="text-white text-quibo-xs leading-[1]">
         {sector.description}
       </p>
     </div>

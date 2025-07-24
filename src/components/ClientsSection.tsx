@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Clients } from '../types'
 import { resolveAssetPath } from '../utils'
 
@@ -9,6 +9,9 @@ interface ClientsSectionProps {
 export function ClientsSection({ clients }: ClientsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDesktop, setIsDesktop] = useState(false)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const isDragging = useRef(false)
 
     useEffect(() => {
     const checkScreenSize = () => {
@@ -53,22 +56,58 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
     })
   }
 
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (isDesktop) return
+    touchStartX.current = e.touches[0].clientX
+    isDragging.current = true
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isDesktop || !isDragging.current) return
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (isDesktop || !isDragging.current) return
+
+    const swipeThreshold = 50 // Minimum distance for a swipe
+    const swipeDistance = touchStartX.current - touchEndX.current
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swiped left - go to next slide
+        nextSlide()
+      } else {
+        // Swiped right - go to previous slide
+        prevSlide()
+      }
+    }
+
+    isDragging.current = false
+    touchStartX.current = 0
+    touchEndX.current = 0
+  }
+
   return (
-    <section className="pt-[4.5rem] pb-[3.1rem] bg-quibo-border overflow-hidden">
+    <section className="pt-[4.5rem] pb-[3.1rem] bg-quibo-border overflow-hidden relative">
       <div className="lg:max-w-none mx-auto lg:mx-0">
         <div className="max-w-[80%] mx-auto lg:max-w-none lg:mx-0">
-          <h2 className="text-quibo-text text-quibo-xl font-medium leading-[1.1] mb-[3.7rem] text-center"
+          <h2 className="text-quibo-text text-quibo-xl font-medium leading-[1.07] mb-[3.7rem] text-center"
           dangerouslySetInnerHTML={{ __html: clients.title }} />
         </div>
 
         {/* Carousel Container */}
-        <div className="relative overflow-hidden">
+        <div className="overflow-hidden">
           {/* Cards */}
           <div
             className="flex transition-transform duration-300 ease-in-out lg:gap-[3.15rem] items-stretch"
             style={{
               transform: `translateX(-${currentIndex * (isDesktop ? (100 / 2.4) : 100)}%)`
             }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {clients.clients.map((client, index) => (
               <div
@@ -82,16 +121,16 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
                     <img
                       src={resolveAssetPath(client.logo.src)}
                       alt={client.logo.alt}
-                      className="max-w-full max-h-[3.7rem] w-auto h-auto"
+                      className="max-w-[90%] max-h-[7.81rem] w-auto h-auto"
                     />
                   </div>
 
                   {/* Content with gray background */}
-                  <div className="bg-quibo-gray-light p-[1.85rem] rounded-[1.6rem] flex-1">
-                    <h3 className="text-quibo-text text-quibo-sm font-medium mb-[1.85rem]">
+                  <div className="bg-quibo-gray-light p-[1.85rem] pb-[5.4rem] rounded-[1.6rem] flex-1">
+                    <h3 className="text-quibo-text text-quibo-md font-medium mb-[3.15rem] leading-[.9]">
                       {client.title}
                     </h3>
-                    <p className="text-quibo-text text-quibo-sm leading-[1.92rem]" dangerouslySetInnerHTML={{ __html: client.description }} />
+                    <p className="text-quibo-text text-quibo-xs leading-[1.1rem]" dangerouslySetInnerHTML={{ __html: client.description }} />
                   </div>
                 </div>
               </div>
@@ -99,7 +138,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
           </div>
 
           {/* Desktop Carousel Controls */}
-          <div className="flex justify-between  mt-[1.85rem] px-[2rem] h-[4rem] lg:h-[2.2rem]">
+          <div className="flex justify-between  absolute w-full top-[50%] -translate-y-[50%] px-[.2rem] h-[1.8rem] lg:h-[2.2rem]">
             <button
               onClick={prevSlide}
               className="hover:opacity-75 transition-opacity"
