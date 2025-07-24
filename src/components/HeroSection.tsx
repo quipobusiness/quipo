@@ -24,7 +24,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
         {/* Title */}
         <h1
-          className="text-white text-center text-quibo-xl mb-[2.59rem] leading-[1.1] max-w-full"
+          className="text-white text-center text-quibo-lg lg:text-quibo-xl mb-[2.59rem] leading-[1.1] max-w-full"
           dangerouslySetInnerHTML={{ __html: hero.title }}
         />
 

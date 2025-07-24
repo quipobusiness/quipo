@@ -5,6 +5,7 @@ interface ButtonProps {
   variant: 'primary' | 'secondary'
   className?: string
   onClick?: () => void
+  disabled?: boolean
   icon?: {
     src: string
     alt: string
@@ -12,7 +13,7 @@ interface ButtonProps {
   }
 }
 
-export function Button({ text, href, type, variant, className = '', onClick, icon }: ButtonProps) {
+export function Button({ text, href, type, variant, className = '', onClick, disabled = false, icon }: ButtonProps) {
   const baseClasses = "inline-block rounded-full uppercase font-semibold text-quibo-xs text-center py-[1.14rem] px-[1.85rem] hover:opacity-90 transition-opacity duration-200"
 
   const variantClasses = {
@@ -41,6 +42,7 @@ export function Button({ text, href, type, variant, className = '', onClick, ico
       <button
         type={type}
         onClick={onClick}
+        disabled={disabled}
         className={classes}
       >
         {content}
