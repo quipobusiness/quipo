@@ -32,7 +32,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target
+    const { name, value } = e.target
 
     let formattedValue = value
 
