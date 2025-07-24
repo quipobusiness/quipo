@@ -13,7 +13,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
       <div className="max-w-[80%] mx-auto flex flex-col lg:flex-row gap-[3.7rem] mb-[4.81rem]">
         {/* Form - 70% width */}
         <div className="lg:w-[70%]">
-          <h2 className="text-white text-quibo-md font-medium mb-[2.18rem]">
+          <h2 className="text-white text-center lg:text-left text-quibo-md font-medium mb-[2.18rem]">
             {contact.title}
           </h2>
           <form
@@ -58,14 +58,14 @@ export function ContactSection({ contact }: ContactSectionProps) {
         </div>
 
           {/* Info Panel - 30% width */}
-        <div className="lg:w-[30%]">
+        <div className="lg:w-[30%] flex flex-col items-center">
           {/* Contact Info - Column */}
           <div className="mb-[3.2rem]">
-            <h3 className="text-white text-quibo-md font-medium mb-[3.2rem]">
+            <h3 className="text-white text-center lg:text-left text-quibo-md font-medium mb-[3.2rem]">
               {contact.info.title}
             </h3>
 
-            <div className="text-white text-quibo-xs ">
+            <div className="text-white text-quibo-xs text-center lg:text-left">
               <a href={`tel:${contact.info.tel}`} className="block hover:text-quibo-border mb-[1.59rem]">
                 {contact.info.tel}
               </a>
@@ -81,7 +81,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
         </div>
       </div>
       {/* Copyright */}
-      <p className="text-white/70 text-quibo-xs mx-[2.77rem]">
+      <p className="text-white/70 text-quibo-xs mx-[2.77rem] text-center lg:text-left">
         {contact.copyright}
       </p>
     </section>

@@ -8,9 +8,9 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section id="servicios" className="my-[3.7rem] max-w-[80%] mx-auto bg-[right_top] bg-[length:14rem_auto] lg:bg-[length:18.3rem_auto]  bg-no-repeat"
+    <section id="servicios" className="my-[3.7rem] max-w-[90%] lg:max-w-[80%] mx-auto bg-[right_top] bg-[length:14rem_auto] lg:bg-[length:18.3rem_auto]  bg-no-repeat"
     style={{ backgroundImage: `url(${resolveAssetPath(services.bgImg)})` }}>
-      <div className="max-w-[80%] lg:max-w-[74rem] mx-auto">
+      <div className="lg:max-w-[74rem] mx-auto">
         {/* Header Content - Centered */}
         <div className="flex flex-col items-center text-center mb-[4rem]">
           <Label className="mb-[2.85rem]">{services.mainLabel}</Label>
@@ -41,7 +41,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               </div>
 
               {/* Content */}
-              <div className="flex-1 text-center lg:text-left">
+              <div className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
                 <Label className="mb-[1.77rem]">{category.label}</Label>
                 <h3 className="text-quibo-text text-quibo-md font-medium mb-[1.59rem]" dangerouslySetInnerHTML={{ __html: category.title }} />
                 <p className="text-quibo-text text-quibo-xs big-break w-[90%] leading-[1.1]" dangerouslySetInnerHTML={{ __html: category.description }} />
@@ -54,10 +54,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         <div className="w-full">
           <a
             href={services.cta.href}
-            className="w-full bg-quibo-text text-white rounded-[1.48rem] uppercase font-medium
-                       text-quibo-sm px-[2.22rem] py-[3.22rem]
+            className="w-full bg-quibo-text text-center text-white rounded-[1.48rem] uppercase font-medium
+                       text-quibo-sm px-[2.22rem] pt-[3.22rem] pb-[1.85rem] lg:py-[3.22rem]
                        hover:opacity-90 transition-opacity duration-200
-                       flex items-center justify-center gap-[1.48rem]"
+                       flex flex-col lg:flex-row items-center justify-center gap-[1.48rem]"
           >
             {services.cta.text}
             <img
