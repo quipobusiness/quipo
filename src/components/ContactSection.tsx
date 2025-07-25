@@ -199,7 +199,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           </div>
 
           {/* Social Icons - Row */}
-          <SocialMedia social={contact.info.social} />
+          <SocialMedia social={contact.info.social} className="justify-center lg:justify-start w-full" />
         </div>
       </div>
       {/* Copyright */}

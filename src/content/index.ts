@@ -30,28 +30,32 @@ export const content: LandingPageContent = {
       { label: "SERVICIOS", href: "#servicios" },
       { label: "CONTACTO", href: "#contacto" }
     ],
-    social: {
-      facebook: {
+    social: [
+      {
+        id: "facebook",
         icon: "/svg/social-fb.svg",
         href: "https://www.facebook.com/quipo.mx",
         alt: "Facebook"
       },
-      instagram: {
+      {
+        id: "instagram",
         icon: "/svg/social-ig.svg",
         href: "https://www.instagram.com/quipo.mx",
         alt: "Instagram"
       },
-      whatsapp: {
+      {
+        id: "whatsapp",
         icon: "/svg/social-wa.svg",
         href: "https://wa.me/your-number",
         alt: "WhatsApp"
       },
-      youtube: {
+      {
+        id: "youtube",
         icon: "/svg/social-yt.svg",
         href: "https://www.youtube.com/quipo.mx",
         alt: "Youtube"
       }
-    }
+    ]
   },
 
   contabilidadCta: {
@@ -236,28 +240,26 @@ export const content: LandingPageContent = {
       tel: "+52 663 439 1259",
       email: "contacto@quipo.mx",
       address: "Josefa Ortiz de Dominguez 1310 Zona Urbana Rio Tijuana, Tijuana B.c. Cp 22010",
-      social: {
-        facebook: {
+      social: [
+        {
+          id: "facebook",
           icon: "/svg/social-fb.svg",
           href: "https://www.facebook.com/quipo.mx",
           alt: "Facebook"
         },
-        instagram: {
+         {
+          id: "instagram",
           icon: "/svg/social-ig.svg",
           href: "https://www.instagram.com/quipo.mx",
           alt: "Instagram"
         },
-        whatsapp: {
+        {
+          id: "whatsapp",
           icon: "/svg/social-wa.svg",
-          href: "https://wa.me/your-number",
+          href: "https://wa.me/526641882374",
           alt: "WhatsApp"
-        },
-        youtube: {
-          icon: "/svg/social-yt.svg",
-          href: "https://www.youtube.com/quipo.mx",
-          alt: "Youtube"
         }
-      }
+      ]
     },
     copyright: "QUIPO Business Partners © Todos los derechos reservados"
   }

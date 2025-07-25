@@ -12,12 +12,7 @@ export interface Navigation {
   logo: Image
   logoLong: Image,
   links: NavigationLink[]
-  social: {
-    facebook: SocialIcon
-    instagram: SocialIcon
-    whatsapp: SocialIcon
-    youtube: SocialIcon
-  }
+  social: SocialIcon[]
 }
 
 // Hero section types
@@ -120,6 +115,7 @@ export interface ContactForm {
 }
 
 export interface SocialIcon {
+  id: string
   icon: string
   href: string
   alt: string
@@ -130,12 +126,7 @@ export interface ContactInfo {
   tel: string
   email: string
   address: string
-  social: {
-    facebook: SocialIcon
-    instagram: SocialIcon
-    whatsapp: SocialIcon
-    youtube: SocialIcon
-  }
+  social: SocialIcon[]
 }
 
 export interface ContactSection {

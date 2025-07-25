@@ -110,18 +110,23 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
               {link.label}
             </a>
           ))}
-          <a
-            href={navigation.social.whatsapp.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
-          >
-            <img
-              src={resolveAssetPath(navigation.social.whatsapp.icon)}
-              alt={navigation.social.whatsapp.alt}
-              className="w-[2.34rem] h-auto -mb-[0.78rem]"
-            />
-          </a>
+          {(() => {
+            const whatsappIcon = navigation.social.find(item => item.id === 'whatsapp')
+            return whatsappIcon ? (
+              <a
+                href={whatsappIcon.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
+              >
+                <img
+                  src={resolveAssetPath(whatsappIcon.icon)}
+                  alt={whatsappIcon.alt}
+                  className="w-[2.34rem] h-auto -mb-[0.78rem]"
+                />
+              </a>
+            ) : null
+          })()}
         </div>
 
         {/* Mobile menu button */}

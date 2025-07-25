@@ -90,7 +90,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
   }
 
   return (
-    <section className="pt-[4.5rem] pb-[3.1rem] bg-quibo-border overflow-hidden relative">
+    <section className="pt-[4.5rem] pb-[3.1rem] bg-quibo-border overflow-hidden">
       <div className="lg:max-w-none mx-auto lg:mx-0">
         <div className="max-w-[80%] mx-auto lg:max-w-none lg:mx-0">
           <h2 className="text-quibo-text text-quibo-xl font-medium leading-[1.07] mb-[3.7rem] text-center"
@@ -98,7 +98,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
         </div>
 
         {/* Carousel Container */}
-        <div className="overflow-hidden">
+        <div className="overflow-hidden relative">
           {/* Cards */}
           <div
             className="flex transition-transform duration-300 ease-in-out lg:gap-[3.15rem] items-stretch"
@@ -137,20 +137,28 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
             ))}
           </div>
 
-          {/* Desktop Carousel Controls */}
+          {/* Carousel Controls */}
           <div className="flex justify-between  absolute w-full top-[50%] -translate-y-[50%] px-[.2rem] h-[1.8rem] lg:h-[2.2rem]">
             <button
               onClick={prevSlide}
               className="hover:opacity-75 transition-opacity"
             >
-              <img src={resolveAssetPath("/svg/carousel-left.svg")} alt="Previous" className="h-full w-auto" />
+              <img
+                src={resolveAssetPath(isDesktop ? "/svg/carousel-left.svg" : "/svg/simple-arrow-left.svg")}
+                alt="Previous"
+                className="h-full w-auto"
+              />
             </button>
 
             <button
               onClick={nextSlide}
               className="hover:opacity-75 transition-opacity"
             >
-              <img src={resolveAssetPath("/svg/carousel-right.svg")} alt="Next" className="h-full w-auto" />
+              <img
+                src={resolveAssetPath(isDesktop ? "/svg/carousel-right.svg" : "/svg/simple-arrow-right.svg")}
+                alt="Next"
+                className="h-full w-auto"
+              />
             </button>
           </div>
         </div>
