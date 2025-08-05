@@ -101,11 +101,11 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
         {children}
       </div>
       {/* Carousel Controls */}
-      <div className="flex justify-between absolute lg:relative w-full top-[50%] lg:top-auto -translate-y-[50%] lg:translate-y-0 lg:mt-[1.8rem] px-[.2rem] h-[1.8rem] lg:h-[2.2rem]">
+      <div className="flex justify-between absolute lg:relative w-full top-[50%] lg:top-auto -translate-y-[50%] lg:translate-y-0 lg:mt-[1.8rem] px-[.2rem] h-[1.8rem] lg:h-[2.2rem] z-10 pointer-events-none">
         {infinite || currentIndex > 0 ? (
           <button
             onClick={prevSlide}
-            className="hover:opacity-75 transition-opacity"
+            className="hover:opacity-75 transition-opacity pointer-events-auto"
             aria-disabled={!infinite && currentIndex === 0}
             tabIndex={infinite || currentIndex > 0 ? 0 : -1}
           >
@@ -119,7 +119,7 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
         {infinite || currentIndex < maxIndex ? (
           <button
             onClick={nextSlide}
-            className="hover:opacity-75 transition-opacity"
+            className="hover:opacity-75 transition-opacity pointer-events-auto"
             aria-disabled={!infinite && currentIndex === maxIndex}
             tabIndex={infinite || currentIndex < maxIndex ? 0 : -1}
           >
