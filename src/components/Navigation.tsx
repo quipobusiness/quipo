@@ -5,11 +5,14 @@ import { resolveAssetPath } from '../utils'
 
 interface NavigationProps {
   navigation: NavigationType
+  scrollHide?: boolean
 }
 
 export const Navigation = forwardRef<HTMLElement, NavigationProps>(
-  ({ navigation }, forwardedRef) => {
+  ({ navigation, scrollHide = false }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
+    const [lastScrollY, setLastScrollY] = useState(0)
 
     // Handle body scroll lock when mobile menu is open
     useEffect(() => {
@@ -45,6 +48,36 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
       }
     }, [isOpen])
 
+    // Handle scroll hide behavior
+    useEffect(() => {
+      if (!scrollHide) return
+
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY
+
+        // Show navigation when scrolling to top
+        if (currentScrollY <= 0) {
+          setIsVisible(true)
+          setLastScrollY(currentScrollY)
+          return
+        }
+
+        // Hide/show based on scroll direction
+        if (currentScrollY > lastScrollY && isVisible) {
+          // Scrolling down - hide navigation
+          setIsVisible(false)
+        } else if (currentScrollY < lastScrollY && !isVisible) {
+          // Scrolling up - show navigation
+          setIsVisible(true)
+        }
+
+        setLastScrollY(currentScrollY)
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      return () => window.removeEventListener('scroll', handleScroll)
+    }, [scrollHide, lastScrollY, isVisible])
+
     const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
@@ -76,7 +109,9 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
     return (
             <nav
         ref={forwardedRef}
-        className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border"
+        className={`fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border transition-transform duration-300 ${
+          scrollHide && !isVisible ? '-translate-y-full' : 'translate-y-0'
+        }`}
       >
         <button
           onClick={scrollToTop}
@@ -86,17 +121,17 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
           <img
             src={resolveAssetPath(navigation.logo.src)}
             alt={navigation.logo.alt}
-            className="h-[2.5rem] md:h-[3.91rem] w-auto md:-mb-[0.9rem] min-[500px]:hidden"
+            className="h-[1.875rem] md:h-[2.9325rem] w-auto md:-mb-[0.675rem] min-[500px]:hidden"
           />
           {/* Long logo for screens >= 500px */}
           <img
             src={resolveAssetPath(navigation.logoLong.src)}
             alt={navigation.logoLong.alt}
-            className="h-[2.5rem] md:h-[3.91rem] w-auto md:-mb-[0.9rem] max-[499px]:hidden"
+            className="h-[1.875rem] md:h-[2.9325rem] w-auto md:-mb-[0.675rem] max-[499px]:hidden"
           />
         </button>
         {/* Desktop navigation */}
-        <div className="hidden lg:flex items-end gap-[3.13rem]">
+        <div className="hidden lg:flex items-end gap-[2.3475rem]">
           {navigation.links.map((link, index) => (
             <a
               key={index}
@@ -119,11 +154,11 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                 rel="noopener noreferrer"
                 className="flex items-center hover:opacity-75 transition-opacity duration-200 flex-shrink-0"
               >
-                <img
-                  src={resolveAssetPath(whatsappIcon.icon)}
-                  alt={whatsappIcon.alt}
-                  className="w-[2.34rem] h-auto -mb-[0.78rem]"
-                />
+                            <img
+              src={resolveAssetPath(whatsappIcon.icon)}
+              alt={whatsappIcon.alt}
+              className="w-[1.755rem] h-auto -mb-[0.585rem]"
+            />
               </a>
             ) : null
           })()}

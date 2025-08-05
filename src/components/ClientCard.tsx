@@ -24,7 +24,7 @@ export function ClientCard({ client }: ClientCardProps) {
           <h3 className="text-quibo-text text-quibo-md font-medium mb-[3.15rem] leading-[.9]">
             {client.title}
           </h3>
-          <p className="text-quibo-text text-quibo-xs leading-[1.1rem]" dangerouslySetInnerHTML={{ __html: client.description }} />
+          <p className="text-quibo-text text-justify text-quibo-xs leading-[1.1rem]" dangerouslySetInnerHTML={{ __html: client.description }} />
         </div>
       </div>
     </div>

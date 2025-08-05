@@ -53,7 +53,9 @@ export function ServicesSection({ services }: ServicesSectionProps) {
         {/* Full-width CTA Button */}
         <div className="w-full">
           <a
-            href={services.cta.href}
+            href="/docs/Quipo_Servicios.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full bg-quibo-text text-center text-white rounded-[1.48rem] uppercase font-medium
                        text-quibo-sm px-[2.22rem] pt-[3.22rem] pb-[1.85rem] lg:py-[3.22rem]
                        hover:opacity-90 transition-opacity duration-200

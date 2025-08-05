@@ -49,12 +49,6 @@ export const content: LandingPageContent = {
         href: "https://wa.me/your-number",
         alt: "WhatsApp"
       },
-      {
-        id: "youtube",
-        icon: "/svg/social-yt.svg",
-        href: "https://www.youtube.com/quipo.mx",
-        alt: "Youtube"
-      }
     ]
   },
 
@@ -227,11 +221,10 @@ export const content: LandingPageContent = {
       },
       fields: [
         { name: "name", label: "Nombre", type: "text", required: true },
-        { name: "empresa", label: "Empresa", type: "text", required: true },
-        { name: "telefono", label: "Teléfono", type: "text", required: false },
+        { name: "empresa", label: "Empresa", type: "text", required: false },
         { name: "email", label: "Correo Electrónico", type: "email", required: true },
         { name: "celular", label: "Cel", type: "text", required: false },
-        { name: "message", label: "Mensaje", type: "textarea", required: true }
+        { name: "message", label: "Mensaje", type: "textarea", required: false }
       ]
     },
     cta: "Enviar",

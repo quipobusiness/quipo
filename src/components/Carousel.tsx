@@ -101,7 +101,7 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
         {children}
       </div>
       {/* Carousel Controls */}
-      <div className="flex justify-between absolute w-full top-[50%] -translate-y-[50%] px-[.2rem] h-[1.8rem] lg:h-[2.2rem]">
+      <div className="flex justify-between absolute lg:relative w-full top-[50%] lg:top-auto -translate-y-[50%] lg:translate-y-0 lg:mt-[1.8rem] px-[.2rem] h-[1.8rem] lg:h-[2.2rem]">
         {infinite || currentIndex > 0 ? (
           <button
             onClick={prevSlide}

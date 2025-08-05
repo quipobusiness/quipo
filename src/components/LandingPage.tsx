@@ -34,7 +34,7 @@ export function LandingPage({ content }: LandingPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation ref={navRef} navigation={content.navigation} />
+      <Navigation ref={navRef} navigation={content.navigation} scrollHide />
 
       <main className="pt-[--nav-height]">
         <HeroSection hero={content.hero} />
