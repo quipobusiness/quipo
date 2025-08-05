@@ -33,7 +33,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         {/* Sectors */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-[0.67rem]">
           {solutions.sectors.map((sector, index) => (
-            <FadeIn key={index}>
+            <FadeIn key={index} staggered={index}>
               <SectorCard sector={sector} />
             </FadeIn>
           ))}

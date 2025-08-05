@@ -5,9 +5,10 @@ interface FadeInProps {
   className?: string
   delay?: number
   duration?: number
+  staggered?: number
 }
 
-export function FadeIn({ children, className = '', delay = 0, duration = 600 }: FadeInProps) {
+export function FadeIn({ children, className = '', delay = 0, duration = 600, staggered }: FadeInProps) {
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
 
@@ -17,12 +18,13 @@ export function FadeIn({ children, className = '', delay = 0, duration = 600 }: 
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          // Add delay if specified
-          setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
-        }
+                 if (entry.isIntersecting) {
+           // Calculate total delay (custom delay + staggered delay)
+           const totalDelay = delay + (staggered ? staggered * 50 : 0)
+           setTimeout(() => {
+             setIsVisible(true)
+           }, totalDelay)
+         }
       },
       {
         threshold: 0.1, // Trigger when 10% of element is visible
@@ -41,12 +43,12 @@ export function FadeIn({ children, className = '', delay = 0, duration = 600 }: 
     <div
       ref={elementRef}
       className={`transition-all ease-out ${className}`}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        marginTop: isVisible ? '0rem' : '2rem',
-        transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`
-      }}
+             style={{
+         opacity: isVisible ? 1 : 0,
+         marginTop: isVisible ? '0rem' : '2rem',
+         transitionDuration: `${duration}ms`,
+         transitionDelay: `${delay + (staggered ? staggered * 50 : 0)}ms`
+       }}
     >
       {children}
     </div>
