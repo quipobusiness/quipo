@@ -1,6 +1,7 @@
 import { Services } from '../types'
 import { Label } from './Label'
 import { resolveAssetPath } from '../utils'
+import { FadeIn } from './FadeIn'
 
 interface ServicesSectionProps {
   services: Services
@@ -33,11 +34,13 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             >
               {/* Image */}
               <div className="flex-1">
-                <img
-                  src={resolveAssetPath(category.img.src)}
-                  alt={category.img.alt}
-                  className="w-full h-auto rounded-lg"
-                />
+                <FadeIn>
+                  <img
+                    src={resolveAssetPath(category.img.src)}
+                    alt={category.img.alt}
+                    className="w-full h-auto rounded-lg"
+                  />
+                </FadeIn>
               </div>
 
               {/* Content */}

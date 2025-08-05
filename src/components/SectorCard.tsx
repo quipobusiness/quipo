@@ -7,7 +7,7 @@ interface SectorCardProps {
 
 export function SectorCard({ sector }: SectorCardProps) {
   return (
-    <div className="bg-quibo-text p-[1.4rem] pb-[3.7rem] text-left relative rounded-[1.6rem] flex flex-col gap-[1.22rem]">
+    <div className="bg-quibo-text h-full p-[1.4rem] pb-[3.7rem] text-left relative rounded-[1.6rem] flex flex-col gap-[1.22rem]">
       <img
         src={resolveAssetPath("/svg/check.svg")}
         alt="Check"

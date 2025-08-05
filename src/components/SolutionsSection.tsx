@@ -2,6 +2,7 @@ import { Solutions } from '../types'
 import { CategoriesCard } from './CategoriesCard'
 import { SectorCard } from './SectorCard'
 import { resolveAssetPath } from '../utils'
+import { FadeIn } from './FadeIn'
 
 interface SolutionsSectionProps {
   solutions: Solutions
@@ -19,7 +20,9 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         {/* Categories */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[0.67rem] mb-[3.7rem]">
           {solutions.categories.map((category, index) => (
-            <CategoriesCard key={index} category={category} />
+            <FadeIn key={index}>
+              <CategoriesCard category={category} />
+            </FadeIn>
           ))}
         </div>
 
@@ -30,7 +33,9 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         {/* Sectors */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-[0.67rem]">
           {solutions.sectors.map((sector, index) => (
-            <SectorCard key={index} sector={sector} />
+            <FadeIn key={index}>
+              <SectorCard sector={sector} />
+            </FadeIn>
           ))}
         </div>
       </div>
