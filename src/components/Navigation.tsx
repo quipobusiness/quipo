@@ -150,7 +150,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
         </div>
 
         {/* Mobile menu */}
-        <div className={`lg:hidden fixed inset-0 bg-quibo-bg transition-all duration-300 z-[55] ${isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-[10%] opacity-0 pointer-events-none'}`} style={{ top: '0', paddingTop: '7.81rem' }}>
+        <div className={`lg:hidden fixed top-0 left-0 right-0 bg-quibo-bg transition-all duration-300 ${isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-[10%] opacity-0 pointer-events-none'}`} style={{ paddingTop: '7.81rem' }}>
           <div className="space-y-6 pl-[4.25rem] pr-[3.94rem] pt-6 pb-6">
             {navigation.links.map((link, index) => (
               <a
@@ -170,7 +170,8 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
             <div onClick={() => setIsOpen(false)} className="px-3 py-2">
               <SocialMedia
                 social={navigation.social}
-                iconSize="w-[2.34rem]"
+                iconSize="w-[2.22rem]"
+                facebookSize="w-[1.9rem]"
               />
             </div>
           </div>
