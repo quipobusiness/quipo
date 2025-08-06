@@ -14,11 +14,11 @@ interface ButtonProps {
 }
 
 export function Button({ text, href, type, variant, className = '', onClick, disabled = false, icon }: ButtonProps) {
-  const baseClasses = "inline-block rounded-full uppercase font-semibold text-quibo-xs text-center py-[1.14rem] px-[1.85rem] hover:opacity-90 transition-opacity duration-200"
+  const baseClasses = "inline-block rounded-full uppercase font-semibold text-quibo-xs text-center py-[1.14rem] px-[1.85rem] transition-all duration-300 ease-in-out transform hover:shadow-lg active:scale-95 animate-fade-in"
 
   const variantClasses = {
-    primary: "bg-quibo-border text-quibo-text font-medium",
-    secondary: "bg-quibo-text text-white font-medium"
+    primary: "bg-quibo-border text-quibo-text font-medium border-2 border-quibo-border hover:bg-quibo-text hover:text-white hover:border-quibo-border",
+    secondary: "bg-quibo-text text-white font-medium border-2 border-quibo-text hover:bg-quibo-border hover:text-quibo-text hover:border-quibo-text"
   }
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${className} ${icon ? 'flex items-center gap-[1.48rem]' : ''}`

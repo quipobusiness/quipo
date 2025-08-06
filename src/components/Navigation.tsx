@@ -9,7 +9,7 @@ interface NavigationProps {
 }
 
 export const Navigation = forwardRef<HTMLElement, NavigationProps>(
-  ({ navigation, scrollHide = false }, forwardedRef) => {
+  ({ navigation }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
 
     // Handle body scroll lock when mobile menu is open
@@ -108,9 +108,10 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                 e.preventDefault()
                 scrollToSection(link.href)
               }}
-              className="text-quibo-text leading-none text-quibo-xs font-medium cursor-pointer"
+              className="text-quibo-text leading-none text-quibo-xs font-medium cursor-pointer relative group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-quibo-border transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
           {(() => {
@@ -160,9 +161,10 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                   setIsOpen(false)
                   scrollToSection(link.href)
                 }}
-                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-quibo-xs cursor-pointer"
+                className="text-quibo-text hover:opacity-75 block px-3 py-2 font-medium transition-opacity duration-200 text-quibo-xs cursor-pointer relative group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-quibo-border transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
             <div onClick={() => setIsOpen(false)} className="px-3 py-2">

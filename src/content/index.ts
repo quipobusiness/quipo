@@ -34,19 +34,19 @@ export const content: LandingPageContent = {
       {
         id: "facebook",
         icon: "/svg/social-fb.svg",
-        href: "https://www.facebook.com/quipo.mx",
+        href: "https://www.facebook.com/share/16rzZBGdKf/?mibextid=wwXIfr",
         alt: "Facebook"
       },
       {
         id: "instagram",
         icon: "/svg/social-ig.svg",
-        href: "https://www.instagram.com/quipo.mx",
+        href: "https://www.instagram.com/quipo.business",
         alt: "Instagram"
       },
       {
         id: "whatsapp",
         icon: "/svg/social-wa.svg",
-        href: "https://wa.me/your-number",
+        href: "https://wa.me/526641882374",
         alt: "WhatsApp"
       },
     ]
@@ -230,20 +230,20 @@ export const content: LandingPageContent = {
     cta: "Enviar",
     info: {
       title: "Contacto",
-      tel: "+52 663 439 1259",
+      tel: "+52 664 188 2374",
       email: "contacto@quipo.mx",
       address: "Josefa Ortiz de Dominguez 1310 Zona Urbana Rio Tijuana, Tijuana B.c. Cp 22010",
       social: [
         {
           id: "facebook",
           icon: "/svg/social-fb.svg",
-          href: "https://www.facebook.com/quipo.mx",
+          href: "https://www.facebook.com/share/16rzZBGdKf/?mibextid=wwXIfr",
           alt: "Facebook"
         },
          {
           id: "instagram",
           icon: "/svg/social-ig.svg",
-          href: "https://www.instagram.com/quipo.mx",
+          href: "https://www.instagram.com/quipo.business",
           alt: "Instagram"
         },
         {

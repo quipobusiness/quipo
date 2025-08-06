@@ -13,7 +13,7 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
   const isDragging = useRef(false)
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null)
+  const autoPlayRef = useRef<number | null>(null)
 
   useEffect(() => {
     const checkScreenSize = () => {

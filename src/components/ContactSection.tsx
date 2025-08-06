@@ -166,14 +166,16 @@ export function ContactSection({ contact }: ContactSectionProps) {
               text={isSubmitting ? 'Enviando...' : contact.cta}
               type="submit"
               variant="primary"
-              className={`px-[2.22rem] transition-opacity ${
-                isSubmitting ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+              className={`px-[2.22rem] transition-all duration-300 ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed animate-pulse' : 'opacity-100'
               }`}
               disabled={isSubmitting}
               icon={{
                 src: resolveAssetPath("/svg/arrow-r.svg"),
                 alt: "Arrow",
-                className: "w-[2.18rem] h-auto -my-[1rem]"
+                className: `w-[2.18rem] h-auto -my-[1rem] transition-transform duration-300 ${
+                  isSubmitting ? 'animate-spin' : ''
+                }`
               }}
             />
           </form>
