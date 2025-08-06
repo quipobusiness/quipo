@@ -8,7 +8,7 @@ interface CategoriesCardProps {
 
 export function CategoriesCard({ category }: CategoriesCardProps) {
   return (
-    <div className="bg-quibo-gray-light p-[1.85rem] text-left rounded-[1.27rem] pt-[1.62rem] px-[1.85rem] pb-[3.22rem] flex flex-col items-start">
+    <div className="bg-quibo-gray-light p-[1.85rem] text-left rounded-[1.27rem] pt-[1.62rem] px-[1.85rem] pb-[3.22rem] flex flex-col items-start h-full">
         <Label className='mb-[3rem]'>{category.label}</Label>
       <h3 className="text-quibo-text text-quibo-lg font-medium mb-[2.3rem] leading-[1.1]">
         {category.title}
@@ -24,7 +24,7 @@ export function CategoriesCard({ category }: CategoriesCardProps) {
         text={category.cta.text}
         href={category.cta.href}
         variant="secondary"
-        className="w-[18rem]"
+        className="w-[18rem] mt-auto"
       />
     </div>
   )

@@ -18,7 +18,7 @@ export function SolutionsSection({ solutions }: SolutionsSectionProps) {
         <img src={resolveAssetPath("/svg/arrow-d.svg")} alt="Solutions" className="w-[2.5rem] h-auto mb-[.88rem]" />
 
         {/* Categories */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[0.67rem] mb-[3.7rem]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[0.67rem] mb-[3.7rem] items-stretch">
           {solutions.categories.map((category, index) => (
             <FadeIn key={index}>
               <CategoriesCard category={category} />

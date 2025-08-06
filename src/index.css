@@ -59,6 +59,6 @@
 /* Prevent images from shrinking on smaller screens */
 @layer utilities {
   .nav-container {
-    padding: 2rem 3.94rem 1.4rem 4.25rem;
+    padding: 1.2rem 3.94rem 0.8rem 4.25rem;
   }
 }

@@ -20,7 +20,7 @@ export function ClientsSection({ clients }: ClientsSectionProps) {
           dangerouslySetInnerHTML={{ __html: clients.title }} />
         </div>
         {/* Carousel Container */}
-        <Carousel>
+        <Carousel infinite>
           {clients.clients.map((client, index) => (
             <ClientCard key={index} client={client} />
           ))}

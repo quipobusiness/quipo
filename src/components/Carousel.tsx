@@ -9,9 +9,11 @@ interface CarouselProps {
 export function Carousel({ children, infinite = false }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [isUserInteracting, setIsUserInteracting] = useState(false)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
   const isDragging = useRef(false)
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -57,9 +59,42 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
     })
   }
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (isUserInteracting) return
+
+    const startAutoPlay = () => {
+      autoPlayRef.current = setInterval(() => {
+        nextSlide()
+      }, 4000) // Change slide every 4 seconds
+    }
+
+    const stopAutoPlay = () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current)
+        autoPlayRef.current = null
+      }
+    }
+
+    startAutoPlay()
+
+    return () => stopAutoPlay()
+  }, [isUserInteracting, maxIndex])
+
+  // Handle user interaction
+  const handleUserInteraction = () => {
+    setIsUserInteracting(true)
+    
+    // Reset interaction flag after 5 seconds of no interaction
+    setTimeout(() => {
+      setIsUserInteracting(false)
+    }, 5000)
+  }
+
   // Touch handlers for swipe functionality
   const handleTouchStart = (e: React.TouchEvent) => {
     if (isDesktop) return
+    handleUserInteraction()
     touchStartX.current = e.touches[0].clientX
     isDragging.current = true
   }
@@ -101,11 +136,14 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
         {children}
       </div>
       {/* Carousel Controls */}
-      <div className="flex justify-between absolute lg:relative w-full top-[50%] lg:top-auto -translate-y-[50%] lg:translate-y-0 lg:mt-[1.8rem] px-[.2rem] h-[1.8rem] lg:h-[2.2rem] z-10">
+      <div className="flex justify-between absolute w-full top-[50%] -translate-y-[50%] px-[2rem] h-[1.8rem] lg:h-[2.2rem] z-10">
         {infinite || currentIndex > 0 ? (
           <button
-            onClick={prevSlide}
-            className="hover:opacity-75 transition-opacity"
+            onClick={() => {
+              handleUserInteraction()
+              prevSlide()
+            }}
+            className="hover:opacity-75 transition-opacity bg-white rounded-full p-2 drop-shadow-md"
             aria-disabled={!infinite && currentIndex === 0}
             tabIndex={infinite || currentIndex > 0 ? 0 : -1}
           >
@@ -118,8 +156,11 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
         ) : <div />}
         {infinite || currentIndex < maxIndex ? (
           <button
-            onClick={nextSlide}
-            className="hover:opacity-75 transition-opacity"
+            onClick={() => {
+              handleUserInteraction()
+              nextSlide()
+            }}
+            className="hover:opacity-75 transition-opacity bg-white rounded-full p-2 drop-shadow-md"
             aria-disabled={!infinite && currentIndex === maxIndex}
             tabIndex={infinite || currentIndex < maxIndex ? 0 : -1}
           >

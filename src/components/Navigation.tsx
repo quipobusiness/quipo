@@ -11,8 +11,6 @@ interface NavigationProps {
 export const Navigation = forwardRef<HTMLElement, NavigationProps>(
   ({ navigation, scrollHide = false }, forwardedRef) => {
     const [isOpen, setIsOpen] = useState(false)
-    const [isVisible, setIsVisible] = useState(true)
-    const [lastScrollY, setLastScrollY] = useState(0)
 
     // Handle body scroll lock when mobile menu is open
     useEffect(() => {
@@ -48,35 +46,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
       }
     }, [isOpen])
 
-    // Handle scroll hide behavior
-    useEffect(() => {
-      if (!scrollHide) return
 
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY
-
-        // Show navigation when scrolling to top
-        if (currentScrollY <= 0) {
-          setIsVisible(true)
-          setLastScrollY(currentScrollY)
-          return
-        }
-
-        // Hide/show based on scroll direction
-        if (currentScrollY > lastScrollY && isVisible) {
-          // Scrolling down - hide navigation
-          setIsVisible(false)
-        } else if (currentScrollY < lastScrollY && !isVisible) {
-          // Scrolling up - show navigation
-          setIsVisible(true)
-        }
-
-        setLastScrollY(currentScrollY)
-      }
-
-      window.addEventListener('scroll', handleScroll, { passive: true })
-      return () => window.removeEventListener('scroll', handleScroll)
-    }, [scrollHide, lastScrollY, isVisible])
 
     const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -109,9 +79,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
     return (
             <nav
         ref={forwardedRef}
-        className={`fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg border-t-[0.58rem] border-quibo-border transition-transform duration-300 ${
-          scrollHide && !isVisible ? '-translate-y-full' : 'translate-y-0'
-        }`}
+        className="fixed flex justify-between nav-container items-end top-0 left-0 right-0 z-50 bg-quibo-bg/95 border-t-[0.58rem] border-quibo-border backdrop-blur-sm shadow-sm"
       >
         <button
           onClick={scrollToTop}
@@ -121,13 +89,13 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
           <img
             src={resolveAssetPath(navigation.logo.src)}
             alt={navigation.logo.alt}
-            className="h-[1.875rem] md:h-[2.9325rem] w-auto md:-mb-[0.675rem] min-[500px]:hidden"
+            className="h-[1.5rem] md:h-[2.4rem] w-auto md:-mb-[0.5rem] min-[500px]:hidden"
           />
           {/* Long logo for screens >= 500px */}
           <img
             src={resolveAssetPath(navigation.logoLong.src)}
             alt={navigation.logoLong.alt}
-            className="h-[1.875rem] md:h-[2.9325rem] w-auto md:-mb-[0.675rem] max-[499px]:hidden"
+            className="h-[1.5rem] md:h-[2.4rem] w-auto md:-mb-[0.5rem] max-[499px]:hidden"
           />
         </button>
         {/* Desktop navigation */}
@@ -157,7 +125,7 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(
                             <img
               src={resolveAssetPath(whatsappIcon.icon)}
               alt={whatsappIcon.alt}
-              className="w-[1.755rem] h-auto -mb-[0.585rem]"
+              className="w-[1.4rem] h-auto -mb-[0.2rem]"
             />
               </a>
             ) : null
