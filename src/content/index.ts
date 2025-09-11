@@ -219,6 +219,9 @@ export const content: LandingPageContent = {
       formspark: {
         actionUrl: "https://submit-form.com/A4lua0bN5",
       },
+      turnstile: {
+        siteKey: "0x4AAAAAAB0ikg4buXvg2HBY",
+      },
       fields: [
         { name: "name", label: "Nombre", type: "text", required: true },
         { name: "empresa", label: "Empresa", type: "text", required: false },

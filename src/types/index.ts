@@ -111,6 +111,9 @@ export interface ContactForm {
   formspark: {
     actionUrl: string
   }
+  turnstile?: {
+    siteKey: string
+  }
   fields: FormField[]
 }
 

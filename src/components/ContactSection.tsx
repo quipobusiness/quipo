@@ -1,8 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ContactSection as ContactSectionType } from '../types'
 import { SocialMedia } from './SocialMedia'
 import { Button } from './Button'
 import { resolveAssetPath } from '../utils'
+
+// Declare Turnstile type
+declare global {
+  interface Window {
+    turnstile: {
+      render: (element: string | HTMLElement, options: {
+        sitekey: string
+        callback?: (token: string) => void
+        'expired-callback'?: () => void
+        'error-callback'?: () => void
+      }) => string
+      reset: (widgetId: string) => void
+      getResponse: (widgetId: string) => string | undefined
+    }
+  }
+}
 
 interface ContactSectionProps {
   contact: ContactSectionType
@@ -13,6 +29,54 @@ export function ContactSection({ contact }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const turnstileRef = useRef<HTMLDivElement>(null)
+  const widgetIdRef = useRef<string | null>(null)
+
+  // Initialize Turnstile
+  useEffect(() => {
+    if (!contact.form.turnstile?.siteKey || !turnstileRef.current) return
+
+    const loadTurnstile = () => {
+      if (window.turnstile && turnstileRef.current) {
+        try {
+          widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: contact.form.turnstile!.siteKey,
+            callback: (token: string) => {
+              console.log('Turnstile token received')
+              setTurnstileToken(token)
+            },
+            'expired-callback': () => {
+              console.log('Turnstile token expired')
+              setTurnstileToken(null)
+            },
+            'error-callback': () => {
+              console.error('Turnstile error')
+              setTurnstileToken(null)
+            }
+          })
+        } catch (error) {
+          console.error('Error rendering Turnstile:', error)
+        }
+      }
+    }
+
+    // Check if turnstile is already loaded
+    if (window.turnstile) {
+      loadTurnstile()
+    } else {
+      // Wait for script to load
+      const checkInterval = setInterval(() => {
+        if (window.turnstile) {
+          clearInterval(checkInterval)
+          loadTurnstile()
+        }
+      }, 100)
+
+      // Clean up interval after 5 seconds
+      setTimeout(() => clearInterval(checkInterval), 5000)
+    }
+  }, [contact.form.turnstile?.siteKey])
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -50,11 +114,26 @@ export function ContactSection({ contact }: ContactSectionProps) {
     setSubmitStatus('idle')
     setErrorMessage('')
 
+    // Check if Turnstile is enabled and token is required
+    if (contact.form.turnstile?.siteKey && !turnstileToken) {
+      setErrorMessage('Por favor complete la verificación de seguridad')
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+
     // Debug logging
     console.log('Submitting form data:', formData)
     console.log('Form URL:', contact.form.formspark.actionUrl)
+    console.log('Turnstile token:', turnstileToken ? 'Present' : 'Not present')
 
     try {
+      // Prepare submission data with Turnstile token if available
+      const submitData = {
+        ...formData,
+        ...(turnstileToken && { 'cf-turnstile-response': turnstileToken })
+      }
+
       // Use JSON approach with proper headers for Formspark
       const response = await fetch(contact.form.formspark.actionUrl, {
         method: 'POST',
@@ -62,7 +141,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submitData),
         redirect: 'manual' // Don't follow redirects
       })
 
@@ -76,6 +155,13 @@ export function ContactSection({ contact }: ContactSectionProps) {
         console.log('Form submitted successfully (redirect detected)')
         setSubmitStatus('success')
         setFormData({}) // Clear form fields
+        
+        // Reset Turnstile if it's being used
+        if (widgetIdRef.current && window.turnstile) {
+          window.turnstile.reset(widgetIdRef.current)
+          setTurnstileToken(null)
+        }
+        
         setTimeout(() => setSubmitStatus('idle'), 5000)
         return
       }
@@ -106,6 +192,13 @@ export function ContactSection({ contact }: ContactSectionProps) {
       // Success
       setSubmitStatus('success')
       setFormData({}) // Clear form fields
+      
+      // Reset Turnstile if it's being used
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(widgetIdRef.current)
+        setTurnstileToken(null)
+      }
+      
       setTimeout(() => setSubmitStatus('idle'), 5000)
 
     } catch (error) {
@@ -167,6 +260,13 @@ export function ContactSection({ contact }: ContactSectionProps) {
                 )}
               </div>
             ))}
+
+            {/* Turnstile Widget */}
+            {contact.form.turnstile?.siteKey && (
+              <div className="w-full flex justify-center mb-[1rem]">
+                <div ref={turnstileRef} />
+              </div>
+            )}
 
             {/* Status Messages */}
             {submitStatus === 'success' && (
