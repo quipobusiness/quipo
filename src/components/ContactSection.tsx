@@ -51,12 +51,15 @@ export function ContactSection({ contact }: ContactSectionProps) {
     setErrorMessage('')
 
     try {
+      // Create FormData for better Formspark compatibility
+      const submitData = new FormData()
+      Object.entries(formData).forEach(([key, value]) => {
+        submitData.append(key, value)
+      })
+
       const response = await fetch(contact.form.formspark.actionUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+        body: submitData
       })
 
       // Check if we got a response
