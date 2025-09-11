@@ -56,6 +56,9 @@ export function ContactSection({ contact }: ContactSectionProps) {
       Object.entries(formData).forEach(([key, value]) => {
         submitData.append(key, value)
       })
+      
+      // Add _ajax parameter to prevent redirect
+      submitData.append('_ajax', 'true')
 
       const response = await fetch(contact.form.formspark.actionUrl, {
         method: 'POST',
