@@ -61,7 +61,9 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             rel="noopener noreferrer"
             className="w-full bg-quibo-text text-center text-white rounded-[1.48rem] uppercase font-medium
                        text-quibo-sm px-[2.22rem] pt-[3.22rem] pb-[1.85rem] lg:py-[3.22rem]
-                       hover:opacity-90 transition-opacity duration-200
+                       border-2 border-quibo-text
+                       hover:bg-quibo-border hover:text-quibo-text hover:border-quibo-text
+                       transition-all duration-300 ease-in-out transform hover:shadow-lg active:scale-95
                        flex flex-col lg:flex-row items-center justify-center gap-[1.48rem]"
           >
             {services.cta.text}

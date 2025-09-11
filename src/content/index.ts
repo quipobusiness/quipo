@@ -11,7 +11,7 @@ export const content: LandingPageContent = {
     title: "Somos tu equipo contable<br />y de negocios.",
     cta: {
       title: "Haz una cita",
-      href: "#contact"
+      href: "#contacto"
     }
   },
 
@@ -84,7 +84,7 @@ export const content: LandingPageContent = {
         label: "Cámbiate a Quipo",
         title: "Haz crecer tu negocio",
         subtitle: "Consultoría fiscal y contable",
-        description: "Revisamos las operaciones de tu negocio para identificar si cumples con las regularizaciones fiscales y posteriormente te brindamos una estrategia que te permita maximizar tus utilidades.",
+        description: "Revisamos las operaciones de tu negocio para identificar si cumples con las regulaciones fiscales y posteriormente te brindamos una estrategia que te permita maximizar tus utilidades.",
         cta: {
           text: "Agenda un diagnóstico",
           href: "#contacto"
@@ -94,7 +94,7 @@ export const content: LandingPageContent = {
     sectors: [
       {
         title: "Médicos y Dentistas",
-        description: "Contabilidad, facturación y declaraciones optimizadas para mantener tu práctica en regla."
+        description: "Contabilidad, facturación, nómina y declaraciones optimizadas para mantener tu práctica en regla."
       },
       {
         title: "Nuevos Negocios",
@@ -129,7 +129,7 @@ export const content: LandingPageContent = {
   services: {
     mainLabel: "Servicios",
     title: "Inteligencia Fiscal<br />y de <em>Negocios</em>",
-    description: "Entendemos de personas y de números, no somos amigos del SAT ni del IMSS pero tampoco son nuestros enemigos, aun así, los conocemos muuuy de cerca.",
+    description: "Entendemos de personas y de números, no somos amigos del SAT ni del IMSS pero tampoco son nuestros enemigos, aun así, los conocemos muy de cerca.",
     bgImg: "/img/accent.webp",
     categories: [
       {
@@ -175,7 +175,7 @@ export const content: LandingPageContent = {
           alt: "Molar House",
         },
         title: "Excelente servicio, profesionales y con amplia experiencia.",
-        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. Juan carlos, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br /><br />La Lic. Valeria, por su parte, nos apoya de manera excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo conocimiento en su área."
+        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. JUAN CARLOS, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br /><br />La Lic. Valeria, por su parte, nos apoya de manera excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo conocimiento en su área."
       },
       {
         logo: {
@@ -207,7 +207,7 @@ export const content: LandingPageContent = {
           alt: "Vip Pinturas - Todo para el carrocero pintor",
         },
         title: "Atención y asesoría constante.",
-        description: "HEs un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
+        description: "Es un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
       }
     ]
   },
@@ -232,7 +232,7 @@ export const content: LandingPageContent = {
       title: "Contacto",
       tel: "+52 664 188 2374",
       email: "contacto@quipo.mx",
-      address: "Josefa Ortiz de Dominguez 1310 Zona Urbana Rio Tijuana, Tijuana B.c. Cp 22010",
+      address: "Josefa Ortiz de Dominguez 1310 Zona Urbana Rio Tijuana, Tijuana B.C. CP 22010",
       social: [
         {
           id: "facebook",

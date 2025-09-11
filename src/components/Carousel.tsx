@@ -9,7 +9,6 @@ interface CarouselProps {
 export function Carousel({ children, infinite = false }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDesktop, setIsDesktop] = useState(false)
-  const [isUserInteracting, setIsUserInteracting] = useState(false)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
   const isDragging = useRef(false)
@@ -59,36 +58,20 @@ export function Carousel({ children, infinite = false }: CarouselProps) {
     })
   }
 
-  // Auto-play functionality
+  // Auto-play functionality - disabled
   useEffect(() => {
-    if (isUserInteracting) return
-
-    const startAutoPlay = () => {
-      autoPlayRef.current = setInterval(() => {
-        nextSlide()
-      }, 4000) // Change slide every 4 seconds
-    }
-
-    const stopAutoPlay = () => {
+    // Auto-play has been disabled
+    return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current)
         autoPlayRef.current = null
       }
     }
-
-    startAutoPlay()
-
-    return () => stopAutoPlay()
-  }, [isUserInteracting, maxIndex])
+  }, [])
 
   // Handle user interaction
   const handleUserInteraction = () => {
-    setIsUserInteracting(true)
-    
-    // Reset interaction flag after 5 seconds of no interaction
-    setTimeout(() => {
-      setIsUserInteracting(false)
-    }, 5000)
+    // User interaction tracking disabled with auto-play
   }
 
   // Touch handlers for swipe functionality
