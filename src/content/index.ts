@@ -216,8 +216,10 @@ export const content: LandingPageContent = {
   contact: {
     title: "Cuéntanos sobre tu negocio",
     form: {
-      formspark: {
-        actionUrl: "https://submit-form.com/A4lua0bN5",
+      emailjs: {
+        serviceId: "default_service", // You may need to update this with your service ID
+        templateId: "template_cc88s3d",
+        publicKey: "8a7E-2G5WUiHdFFRW",
       },
       turnstile: {
         siteKey: "0x4AAAAAAB0ikg4buXvg2HBY",

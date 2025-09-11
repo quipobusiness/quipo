@@ -108,8 +108,13 @@ export interface FormField {
 }
 
 export interface ContactForm {
-  formspark: {
+  formspark?: {
     actionUrl: string
+  }
+  emailjs?: {
+    serviceId: string
+    templateId: string
+    publicKey: string
   }
   turnstile?: {
     siteKey: string

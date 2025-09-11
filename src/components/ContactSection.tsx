@@ -4,7 +4,7 @@ import { SocialMedia } from './SocialMedia'
 import { Button } from './Button'
 import { resolveAssetPath } from '../utils'
 
-// Declare Turnstile type
+// Declare global types
 declare global {
   interface Window {
     turnstile: {
@@ -16,6 +16,10 @@ declare global {
       }) => string
       reset: (widgetId: string) => void
       getResponse: (widgetId: string) => string | undefined
+    }
+    emailjs: {
+      init: (publicKey: string) => void
+      send: (serviceId: string, templateId: string, templateParams: Record<string, any>) => Promise<any>
     }
   }
 }
@@ -108,6 +112,14 @@ export function ContactSection({ contact }: ContactSectionProps) {
     setFormData(prev => ({ ...prev, [name]: formattedValue }))
   }
 
+  // Initialize EmailJS
+  useEffect(() => {
+    if (contact.form.emailjs?.publicKey && window.emailjs) {
+      window.emailjs.init(contact.form.emailjs.publicKey)
+      console.log('EmailJS initialized')
+    }
+  }, [contact.form.emailjs?.publicKey])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -124,91 +136,91 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
     // Debug logging
     console.log('Submitting form data:', formData)
-    console.log('Form URL:', contact.form.formspark.actionUrl)
+    console.log('EmailJS config:', contact.form.emailjs)
     console.log('Turnstile token:', turnstileToken ? 'Present' : 'Not present')
 
     try {
-      // Prepare submission data with Turnstile token if available
-      const submitData = {
-        ...formData,
-        ...(turnstileToken && { 'cf-turnstile-response': turnstileToken })
-      }
-
-      // Use JSON approach with proper headers for Formspark
-      const response = await fetch(contact.form.formspark.actionUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(submitData),
-        redirect: 'manual' // Don't follow redirects
-      })
-
-      console.log('Response status:', response.status)
-      console.log('Response type:', response.type)
-      console.log('Response headers:', response.headers)
-
-      // Check if response is a redirect (which means success for Formspark)
-      if (response.type === 'opaqueredirect' || response.status === 0) {
-        // This is actually a success - Formspark redirects on success
-        console.log('Form submitted successfully (redirect detected)')
-        setSubmitStatus('success')
-        setFormData({}) // Clear form fields
-        
-        // Reset Turnstile if it's being used
-        if (widgetIdRef.current && window.turnstile) {
-          window.turnstile.reset(widgetIdRef.current)
-          setTurnstileToken(null)
+      // Check if we're using EmailJS
+      if (contact.form.emailjs) {
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+          ...formData,
+          time: new Date().toLocaleString('es-MX', { 
+            timeZone: 'America/Tijuana',
+            dateStyle: 'full',
+            timeStyle: 'short'
+          }),
+          ...(turnstileToken && { 'cf-turnstile-response': turnstileToken })
         }
-        
-        setTimeout(() => setSubmitStatus('idle'), 5000)
-        return
-      }
 
-      // Check if we got a normal response
-      if (!response.ok && response.status !== 302 && response.status !== 303) {
-        throw new Error(`Error HTTP ${response.status}: ${response.statusText}`)
-      }
+        console.log('Sending email with params:', templateParams)
 
-      // Try to parse response body if available
-      let responseData
-      try {
-        const responseText = await response.text()
-        console.log('Response text:', responseText)
+        // Send email using EmailJS
+        const response = await window.emailjs.send(
+          contact.form.emailjs.serviceId,
+          contact.form.emailjs.templateId,
+          templateParams
+        )
 
-        try {
-          responseData = JSON.parse(responseText)
-        } catch {
-          responseData = { message: responseText }
+        console.log('EmailJS response:', response)
+
+        if (response.status === 200) {
+          // Success
+          setSubmitStatus('success')
+          setFormData({}) // Clear form fields
+          
+          // Reset Turnstile if it's being used
+          if (widgetIdRef.current && window.turnstile) {
+            window.turnstile.reset(widgetIdRef.current)
+            setTurnstileToken(null)
+          }
+          
+          setTimeout(() => setSubmitStatus('idle'), 5000)
+        } else {
+          throw new Error('Error al enviar el mensaje')
         }
-      } catch (error) {
-        console.log('Could not read response body:', error)
-        responseData = { message: 'Form submitted' }
-      }
+      } else if (contact.form.formspark) {
+        // Legacy Formspark code (kept for backwards compatibility)
+        const submitData = {
+          ...formData,
+          ...(turnstileToken && { 'cf-turnstile-response': turnstileToken })
+        }
 
-      console.log('Response data:', responseData)
+        const response = await fetch(contact.form.formspark.actionUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(submitData),
+          redirect: 'manual'
+        })
 
-      // Success
-      setSubmitStatus('success')
-      setFormData({}) // Clear form fields
-      
-      // Reset Turnstile if it's being used
-      if (widgetIdRef.current && window.turnstile) {
-        window.turnstile.reset(widgetIdRef.current)
-        setTurnstileToken(null)
+        if (response.type === 'opaqueredirect' || response.status === 0 || response.ok) {
+          setSubmitStatus('success')
+          setFormData({})
+          
+          if (widgetIdRef.current && window.turnstile) {
+            window.turnstile.reset(widgetIdRef.current)
+            setTurnstileToken(null)
+          }
+          
+          setTimeout(() => setSubmitStatus('idle'), 5000)
+        } else {
+          throw new Error(`Error HTTP ${response.status}`)
+        }
+      } else {
+        throw new Error('No email service configured')
       }
-      
-      setTimeout(() => setSubmitStatus('idle'), 5000)
 
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
       
-      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-        setErrorMessage('Error de envío. Por favor intente nuevamente.')
+      if (error instanceof Error) {
+        setErrorMessage(error.message || 'Error al enviar el mensaje')
       } else {
-        setErrorMessage(error instanceof Error ? error.message : 'Error al enviar el mensaje')
+        setErrorMessage('Error al enviar el mensaje')
       }
     } finally {
       setIsSubmitting(false)
