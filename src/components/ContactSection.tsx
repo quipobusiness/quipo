@@ -50,58 +50,70 @@ export function ContactSection({ contact }: ContactSectionProps) {
     setSubmitStatus('idle')
     setErrorMessage('')
 
-    try {
-      // Create FormData for better Formspark compatibility
-      const submitData = new FormData()
-      Object.entries(formData).forEach(([key, value]) => {
-        submitData.append(key, value)
-      })
-      
-      // Add _ajax parameter to prevent redirect
-      submitData.append('_ajax', 'true')
+    // Debug logging
+    console.log('Submitting form data:', formData)
+    console.log('Form URL:', contact.form.formspark.actionUrl)
 
+    try {
+      // Use JSON approach with proper headers for Formspark
       const response = await fetch(contact.form.formspark.actionUrl, {
         method: 'POST',
-        body: submitData
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData),
+        redirect: 'manual' // Don't follow redirects
       })
 
-      // Check if we got a response
-      if (!response.ok) {
+      console.log('Response status:', response.status)
+      console.log('Response type:', response.type)
+      console.log('Response headers:', response.headers)
+
+      // Check if response is a redirect (which means success for Formspark)
+      if (response.type === 'opaqueredirect' || response.status === 0) {
+        // This is actually a success - Formspark redirects on success
+        console.log('Form submitted successfully (redirect detected)')
+        setSubmitStatus('success')
+        setFormData({}) // Clear form fields
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+        return
+      }
+
+      // Check if we got a normal response
+      if (!response.ok && response.status !== 302 && response.status !== 303) {
         throw new Error(`Error HTTP ${response.status}: ${response.statusText}`)
       }
 
-            // Try to parse response body to get more details
+      // Try to parse response body if available
       let responseData
       try {
         const responseText = await response.text()
+        console.log('Response text:', responseText)
 
-        // Try to parse as JSON first
         try {
           responseData = JSON.parse(responseText)
         } catch {
-          // If not JSON, treat as plain text
           responseData = { message: responseText }
         }
-      } catch {
-        responseData = { message: 'Response received' }
+      } catch (error) {
+        console.log('Could not read response body:', error)
+        responseData = { message: 'Form submitted' }
       }
 
-      // Check for common error indicators in response
-      const responseStr = JSON.stringify(responseData).toLowerCase()
-      if (responseStr.includes('error') || responseStr.includes('fail') || responseStr.includes('invalid')) {
-        throw new Error(`Error del servidor: ${responseData.message || 'Error desconocido'}`)
-      }
+      console.log('Response data:', responseData)
 
       // Success
       setSubmitStatus('success')
       setFormData({}) // Clear form fields
-      // Clear success message after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000)
 
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        setErrorMessage('Error de conexión. Verifique su internet.')
+      
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        setErrorMessage('Error de envío. Por favor intente nuevamente.')
       } else {
         setErrorMessage(error instanceof Error ? error.message : 'Error al enviar el mensaje')
       }
