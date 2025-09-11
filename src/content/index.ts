@@ -199,7 +199,7 @@ export const content: LandingPageContent = {
           alt: "Elevanova - Venta y renta de maquinaria",
         },
         title: "Amplio conocimiento y experiencía.",
-        description: "El Lic. Juan Carlos Pedroza nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br /><br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
+        description: "El Lic. JUAN CARLOS PEDROZA nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br /><br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
       },
       {
         logo: {
@@ -207,7 +207,7 @@ export const content: LandingPageContent = {
           alt: "Vip Pinturas - Todo para el carrocero pintor",
         },
         title: "Atención y asesoría constante.",
-        description: "Es un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
+        description: "Es un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador JUAN CARLOS PEDROZA siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
       }
     ]
   },
