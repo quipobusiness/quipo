@@ -5,7 +5,7 @@ export const content: LandingPageContent = {
   hero: {
     logo: {
       src: '/svg/logo-green.svg',
-      alt: 'Quibo. Business partners'
+      alt: 'Quipo. Business partners'
     },
     bgImage: '/img/hero.webp',
     title: "Somos tu equipo contable<br />y de negocios.",
@@ -19,11 +19,11 @@ export const content: LandingPageContent = {
   navigation: {
     logo: {
       src: "/svg/logo.svg",
-      alt: "Quibo. Business partners"
+      alt: "Quipo. Business partners"
     },
     logoLong: {
       src: "/svg/logo-long.svg",
-      alt: "Quibo. Business partners"
+      alt: "Quipo. Business partners"
     },
     links: [
       { label: "SOLUCIONES", href: "#soluciones" },
@@ -175,7 +175,7 @@ export const content: LandingPageContent = {
           alt: "Molar House",
         },
         title: "Excelente servicio, profesionales y con amplia experiencia.",
-        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. JUAN CARLOS, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br /><br />La Lic. Valeria, por su parte, nos apoya de manera excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo conocimiento en su área."
+        description: "Hace cuatro años, un buen amigo nos recomendó los servicios de Quipo, y desde nuestra primera reunión con el Lic. Juan Carlos, notamos la diferencia. Nos dio un diagnóstico claro y un panorama preciso sobre nuestras posibilidades como nuevos emprendedores. Veníamos de una contabilidad desorganizada, pero gracias a su guía, logramos poner todo en orden.<br /><br />La Lic. Valeria, por su parte, nos apoya de manera excepcional en temas de nómina e imss, siempre con un enfoque profesional y detallado. Ambos destacan por su honestidad, atención al detalle y profundo conocimiento en su área."
       },
       {
         logo: {
@@ -199,7 +199,7 @@ export const content: LandingPageContent = {
           alt: "Elevanova - Venta y renta de maquinaria",
         },
         title: "Amplio conocimiento y experiencía.",
-        description: "El Lic. JUAN CARLOS PEDROZA nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br /><br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
+        description: "El Lic. Juan Carlos Pedroza nos brindó toda la asesoría necesaria para poner en marcha nuestra empresa, abarcando desde aspectos legales hasta la orientación fiscal indispensable para iniciar un negocio conforme a la normativa. Su amplio conocimiento y experiencia en materia fiscal han sido clave para cumplir con todos los requisitos aplicables.<br /><br />Reiteramos nuestra recomendación y expresamos nuestra plena satisfacción con sus servicios."
       },
       {
         logo: {
@@ -207,7 +207,7 @@ export const content: LandingPageContent = {
           alt: "Vip Pinturas - Todo para el carrocero pintor",
         },
         title: "Atención y asesoría constante.",
-        description: "Es un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador JUAN CARLOS PEDROZA siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
+        description: "Es un gusto trabajar con un despacho contable        generacional que siempre nos ha guiado por el camino correcto, contable y fiscalmente. Esto nos ha permitido crecer como empresa, obteniendo como resultado la tranquilidad de que todo está en orden y evitando problemas fiscales.<br /><br />Desde hace 20 años que iniciamos nuestra empresa, hemos recibido una atención y asesoría constante que nos ha permitido estar siempre a la vanguardia. El contador Juan Carlos Pedroza siempre se ha preocupado por continuar con su preparación constante, no solo en temas de contabilidad, sino también en tecnología.  "
       }
     ]
   },
